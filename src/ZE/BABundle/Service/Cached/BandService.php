@@ -25,7 +25,7 @@ class BandService extends ServiceAbstract
 
 
         $dql = "
-              SELECT b, bg, ba, br, bac, bacc, m, mg, mi, ma, mr, mac, macc, bd, md
+              SELECT b, bg, ba, br, bac, bacc, m, mg, mi, ma, mr, mac, macc, bd, md,bu
               FROM ZEBABundle:Band b
               LEFT JOIN b.genres bg
               LEFT JOIN b.addresses ba
@@ -41,6 +41,7 @@ class BandService extends ServiceAbstract
               LEFT JOIN ma.city mac
               LEFT JOIN mac.country macc
               LEFT JOIN m.documents md
+              INNER JOIN b.user bu
             ";
 
         if (!empty($params['withVacancies'])) {
@@ -74,6 +75,8 @@ class BandService extends ServiceAbstract
 
 
         foreach ($arrEntity as $keyEntity => &$arrEnt) {
+            $arrEnt['userId'] = $arrEnt['user']['id'];
+            unset($arrEnt['user']);
             $this->sideloadEntity($arrEnt, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses, $arrDocuments);
             foreach ($arrEnt['musicians'] as &$musician) {
                 $this->sideloadEntity($musician, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses, $arrDocuments, $arrInstruments);

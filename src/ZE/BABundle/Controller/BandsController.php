@@ -19,7 +19,7 @@ class BandsController extends FOSRestController
      * by symfony security
      *
      * @ApiDoc(
-     *  resource=false,
+     *  resource=true,
      *  description="Get homepage content",
      *  filters={
      *      {"name"="page", "dataType"="integer"},
@@ -44,7 +44,7 @@ class BandsController extends FOSRestController
     /**
      *
      * @ApiDoc(
-     *  resource=false,
+     *  resource=true,
      *  description="Get Specific Band Info",
      *  filters={
      *      {"name"="slug", "dataType"="string"},
@@ -65,6 +65,20 @@ class BandsController extends FOSRestController
         return $this->handleView($view);
 
     }
+    /**
+     *
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Get Specific Band Info",
+     *  filters={
+     *      {"name"="slug", "dataType"="string"},
+     *  }
+     * )
+     */
+
+    public function putUserAction($slug)
+    {} // "put_user"      [PUT] /users/{slug}
+
     public function indexAction()
     {
 

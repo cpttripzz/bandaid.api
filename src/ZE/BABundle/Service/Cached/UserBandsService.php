@@ -25,7 +25,7 @@ class UserBandsService extends ServiceAbstract
         if (empty($bands)) {
 
             $dql = "
-              SELECT b, bg, ba, br, bac, bacc, bd
+              SELECT b, bg, ba, br, bac, bacc, bd, bu
               FROM ZEBABundle:Band b
               LEFT JOIN b.genres bg
               LEFT JOIN b.addresses ba
@@ -53,6 +53,8 @@ class UserBandsService extends ServiceAbstract
 
 
             foreach($arrEntity as $keyEntity => &$arrEnt){
+                $arrEnt['userId'] = $arrEnt['user']['id'];
+                unset($arrEnt['user']);
                 $this->sideloadEntity($arrEnt, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses,$arrDocuments);
             }
             $meta = array('total'=>$totalItems,'pagesCount'=>$pagesCount);
@@ -60,7 +62,7 @@ class UserBandsService extends ServiceAbstract
             return array(
                 'bands' => $arrEntity,'genres' =>$arrGenres,'countries' =>$arrCountries,
                 'regions' => $arrRegions,'cities' =>$arrCities,'addresses' => $arrAddresses,
-                'meta' =>$meta
+                'documents' => $arrDocuments, 'meta' =>$meta
             );
         }
     }

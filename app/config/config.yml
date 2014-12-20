@@ -76,6 +76,50 @@ fos_user:
     db_driver: orm
     firewall_name: secure_area
     user_class: ZE\BABundle\Entity\User
-    registration:
-        confirmation:
-            enabled:    false # change to true for required email confirmation
+snc_redis:
+
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: redis://localhost
+        cache:
+            type: predis
+            alias: cache
+            dsn: redis://secret@localhost/1
+            options:
+               profile: 2.2
+               connection_timeout: 10
+               read_write_timeout: 30
+    session:
+        client: default
+        use_as_default: true
+
+doctrine_cache:
+    providers:
+        redis_cache:
+            type: 'redis'
+
+nelmio_api_doc: ~
+lexik_jwt_authentication:
+  pass_phrase: "123456"
+  private_key_path: "%kernel.root_dir%/var/jwt/private.pem"
+  public_key_path: "%kernel.root_dir%/var/jwt/public.pem"
+  token_ttl: 86400
+
+nelmio_cors:
+    paths:
+        '/login_check':
+            allow_origin: ['http://localhost:4200']
+            allow_headers: ['origin', 'content-type','X-Custom-Auth','authorization']
+            allow_methods: ['POST', 'PUT', 'GET', 'DELETE','OPTIONS']
+            max_age: 3600
+        '/api/*':
+            allow_origin: ['http://localhost:4200']
+            allow_headers: ['accept', 'origin', 'content-type','X-Custom-Auth','authorization']
+            allow_methods: ['POST', 'PUT', 'GET', 'DELETE','OPTIONS']
+            max_age: 3600
+fos_rest:
+    routing_loader:
+        default_format: json
+             # ensure distinct results, useful when ORM queries are using GROUP BY statements

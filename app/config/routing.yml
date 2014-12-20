@@ -1,8 +1,38 @@
-zeba:
-    resource: "@ZEBABundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 app:
     resource: @AppBundle/Controller/
     type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+gettoken:
+  path: /api/open/getToken
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+
+homeitems:
+  type: rest
+  resource: ZE\BABundle\Controller\HomeItemsController
+  prefix:   /api/open
+
+genres:
+  type: rest
+  resource: ZE\BABundle\Controller\GenresController
+  prefix:   /api
+
+
+bands:
+  type: rest
+  resource: ZE\BABundle\Controller\BandsController
+  prefix:   /api/open
+
+userbands:
+  type: rest
+  resource: ZE\BABundle\Controller\UserBandsController
+  prefix:   /api/secure
+useritems:
+  type: rest
+  resource: ZE\BABundle\Controller\UserItemsController
+  prefix:   /api/secure

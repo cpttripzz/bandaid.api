@@ -21,7 +21,7 @@ class HomeItemsService extends ServiceAbstract
     public function getHomeItems($userId, $page, $limit)
     {
         $homeItems = array();
-        $homeItems= $this->bandService->findAllBands( $page, $limit,$userId,true);
+        $homeItems= $this->bandService->findBands( $page, $limit,$userId,true);
 
         $arrBandIds = array();
         foreach($homeItems['bands'] as $homeItem){

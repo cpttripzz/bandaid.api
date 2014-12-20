@@ -21,7 +21,7 @@ class UserItemsController  extends FOSRestController
      *  }
      * )
      */
-    public function getUserItemsAction()
+    public function getUseritemAction($slug)
     {
 
         if( !$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){

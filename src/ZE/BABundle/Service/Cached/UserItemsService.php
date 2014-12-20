@@ -24,9 +24,9 @@ class UserItemsService extends ServiceAbstract
         foreach($userItems['bands'] as $userItem){
             $arrBandIds[] = $userItem['id'];
         }
-        $userItems['useritems']['id'] = 1;
-        $userItems['useritems']['name'] = 'home items test';
-        $userItems['useritems']['bands'] = $arrBandIds;
+        $userItems['useritem']['id'] = 1;
+        $userItems['useritem']['name'] = 'home items test';
+        $userItems['useritem']['bands'] = $arrBandIds;
         return $userItems;
     }
     protected function sideloadEntity(&$arrEnt, &$arrAddress, &$arrGenres, &$arrCountries, &$arrCities, &$arrRegions, &$arrAddresses, &$arrInstruments=array())

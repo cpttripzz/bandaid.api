@@ -5,6 +5,8 @@ use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundException;
+
 class HomeItemsController extends FOSRestController
 {
     /**
@@ -21,13 +23,15 @@ class HomeItemsController extends FOSRestController
      *  }
      * )
      */
-    public function getHomeitemsAction()
+    public function getHomeitemAction($userslug)
     {
         $userId = null;
+        try {
         if( $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
             $user = $this->get('security.context')->getToken()->getUser();
             $userId = $user->getId();
         }
+        } catch (AuthenticationCredentialsNotFoundException $e){}
 
         $data = $this->get('zeba.homeitems_service')->getHomeItems(
             $userId,$this->get('request')->query->get('page', 1),$this->get('request')->query->get('limit', 10)

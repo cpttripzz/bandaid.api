@@ -1,9 +1,102 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
-
+    zeba_user_provider.class: ZE\BABundle\Service\Security\FOSUBUserProvider
+    ze_user_security.authentication.handler.login_success_handler.class: ZE\BABundle\Security\Authentication\Handler\LoginSuccessHandler
+    ze_user_security.authentication.handler.logout_success_handler.class: ZE\BABundle\Security\Authentication\Handler\LogoutSuccessHandler
+    ze_user_security.authentication.handler.login_failure_handler.class: ZE\BABundle\Security\Authentication\Handler\LoginFailureHandler
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    zeba_user_provider:
+        class: "%zeba_user_provider.class%"
+        arguments: [@fos_user.user_manager,{facebook: facebook_id, google: google_id, github: githubID}]
+
+    zeba_cacheservice:
+        class: ZE\BABundle\Service\Cached\ServiceAbstract
+        abstract:  true
+        arguments:
+            - @doctrine_cache.providers.redis_cache
+            - @doctrine.orm.entity_manager
+    zeba.band_service:
+        class: ZE\BABundle\Service\Cached\BandService
+        parent: zeba_cacheservice
+    zeba.userbands_service:
+        class: ZE\BABundle\Service\Cached\UserBandsService
+        parent: zeba_cacheservice
+    zeba.homeitems_service:
+            class: ZE\BABundle\Service\Cached\HomeItemsService
+            parent: zeba_cacheservice
+            arguments:
+                - @zeba.band_service
+    zeba.useritems_service:
+        class: ZE\BABundle\Service\Cached\UserItemsService
+        parent: zeba_cacheservice
+        arguments:
+            - @zeba.userbands_service
+
+    zeba_api.event.authentication_success_listener:
+        class: ZE\BABundle\Security\Authentication\EventListener\AuthenticationSuccessListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+
+    security.access.post_voter:
+        class:      ZE\BABundle\Security\Authorization\Voter\AssociationVoter
+        public:     false
+        tags:
+            - { name: security.voter }
+    zeba.twig.file.exists.extension:
+        class: ZE\BABundle\Twig\Extension\FileExistsExtension
+        tags:
+            - { name: twig.extension" }
+
+    zeba.listener.JoinBandRequestEvent:
+        class: ZE\BABundle\EventListener\JoinBandRequestEventListener
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @doctrine_cache.providers.redis_cache
+
+        tags:
+            - { name: kernel.event_listener, event: zeba.band.join_request, method: onJoinBandRequestEvent }
+    zeba.listener.JoinBandAcceptEvent:
+        class: ZE\BABundle\EventListener\JoinBandAcceptEventListener
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @doctrine_cache.providers.redis_cache
+            - @ze.band_manager_service
+        tags:
+            - { name: kernel.event_listener, event: zeba.band.join_accept, method: onJoinBandAcceptEvent }
+    ze_user_security.authentication.handler.login_success_handler:
+        class:  %ze_user_security.authentication.handler.login_success_handler.class%
+        arguments:
+            - @router
+            - @security.context
+        calls:
+            - [setSession, ["@session"]]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
+    ze_user_security.authentication.handler.logout_success_handler:
+        class:  %ze_user_security.authentication.handler.logout_success_handler.class%
+        arguments:  [@router]
+
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
+    ze_user_security.authentication.handler.login_failure_handler:
+        class:  %ze_user_security.authentication.handler.login_failure_handler.class%
+        arguments:  [@router, @security.context]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
+    ze.event_listener_set_url:
+        class:  ZE\BABundle\EventListener\SetUrlEventListener
+        arguments:  [@router]
+        calls:
+            - [setSession, ["@session"]]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+    ze.band_manager_service:
+        class:  ZE\BABundle\Service\Util\BandManager
+        arguments:  [@security.context, @doctrine.orm.entity_manager]
+    kernel.event_listener.json_request_transformer:
+        class: Qandidate\Common\Symfony\HttpKernel\EventListener\JsonRequestTransformerListener
+        tags:
+          - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
+    zeba.encoder.nixilla_jwt_encoder:
+        class: ZE\BABundle\Security\NixillaJWTEncoder
+        arguments: [eyJleHAiOjE0MTg0MjI0NTUsInVzZXJuYW1lIjoianV]
+
