@@ -3,14 +3,12 @@
 namespace ZE\BABundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="ZE\BABundle\Entity\Repository\Band")
  */
 class Band extends Association
 {
-
 
     /**
      * @ORM\ManyToMany(targetEntity="Musician", inversedBy="bands")
@@ -53,6 +51,13 @@ class Band extends Association
         return $this->musicians;
     }
 
+    public function setMusicians(ArrayCollection $musicians)
+    {
+        $this->removeAllMusicians();
+        foreach($musicians as $musician){
+            $this->addMusician($musician);
+        }
+    }
     /**
      * Add bandVacancy.
 
@@ -88,6 +93,16 @@ class Band extends Association
     public function getBandVacancyAssociations()
     {
         return $this->bandVacancyAssociations;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function removeAllMusicians()
+    {
+        foreach ($this->musicians as $musician) {
+            $this->removeMusician($musician);
+        }
     }
 
 

@@ -11,7 +11,6 @@ gettoken:
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
-
 homeitems:
   type: rest
   resource: ZE\BABundle\Controller\HomeItemsController
@@ -20,14 +19,14 @@ homeitems:
 genres:
   type: rest
   resource: ZE\BABundle\Controller\GenresController
-  prefix:   /api
-
-
+  prefix:   /api/open
 bands:
   type: rest
   resource: ZE\BABundle\Controller\BandsController
   prefix:   /api/open
-
+put_band:
+    pattern:  /api/secure/band/{id}
+    defaults: { _controller: ZEBABundle:Bands:putBand, _format: json }
 userbands:
   type: rest
   resource: ZE\BABundle\Controller\UserBandsController

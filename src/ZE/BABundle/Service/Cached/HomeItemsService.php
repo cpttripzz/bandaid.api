@@ -8,9 +8,6 @@
 
 namespace ZE\BABundle\Service\Cached;
 
-
-use Doctrine\ORM\Tools\Pagination\Paginator;
-
 class HomeItemsService extends ServiceAbstract
 {
     protected $bandService;

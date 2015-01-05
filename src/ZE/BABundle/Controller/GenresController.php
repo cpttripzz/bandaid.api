@@ -23,15 +23,8 @@ class GenresController extends FOSRestController
      */
     public function getGenresAction()
     {
-        $userId = null;
-        if( $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
-            $user = $this->get('security.context')->getToken()->getUser();
-            $userId = $user->getId();
-        }
 
-        $data = $this->get('zeba.band_service')->findBands(
-            $userId,$this->get('request')->query->get('page', 1),$this->get('request')->query->get('limit', 10)
-        );
+        $data = $this->get('zeba.genre_service')->findGenres();
 
         $view = $this->view($data, 200);
 

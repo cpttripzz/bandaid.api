@@ -13,6 +13,13 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class BandService extends ServiceAbstract
 {
+    protected $genreService;
+
+    public function __construct($cacheProvider,$entityManager,$genreService){
+        $this->genreService = $genreService;
+        parent::__construct($cacheProvider,$entityManager);
+    }
+
     /**
      * @param $userId
      * @param $page
@@ -60,15 +67,17 @@ class BandService extends ServiceAbstract
         $query = $this->em->createQuery($dql)
             ->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit)
-            ->setResultCacheDriver($this->cacheProvider)
-            ->setResultCacheLifetime(86400);
+            ;
         if (!empty($params['bandSlug'])) {
             $query->setParameter('bandSlug', $params['bandSlug']);
         }
         $query->getArrayResult();
         $paginator = new Paginator($query, $fetchJoinCollection = true);
         $totalItems = count($paginator);
-        $pagesCount = ceil($totalItems / $limit);
+        $pagesCount = 1;
+        if($page && $limit) {
+            $pagesCount = ceil($totalItems / (int)$limit);
+        }
         $arrEntity = iterator_to_array($paginator, true);
         $arrGenres = $arrAddresses = $arrInstruments = $arrCities =
         $arrCountries = $arrRegions = $arrMusicians = $arrDocuments = array();
@@ -89,20 +98,14 @@ class BandService extends ServiceAbstract
             $entityReturnName = 'band';
             $arrEntity = reset($arrEntity);
         }
-
+        $arrGenres = $this->genreService->findGenres();
+        $arrGenres = $arrGenres['genres'];
         return array(
             $entityReturnName => $arrEntity, 'genres' => $arrGenres, 'countries' => $arrCountries,
             'regions' => $arrRegions, 'cities' => $arrCities, 'addresses' => $arrAddresses,
             'documents' => $arrDocuments, 'musicians' => $arrMusicians, 'instruments' => $arrInstruments,
             'meta' => $meta,
         );
-
-        return array(
-            'bands' => $arrEntity, 'genres' => $arrGenres, 'countries' => $arrCountries,
-            'regions' => $arrRegions, 'cities' => $arrCities, 'addresses' => $arrAddresses,
-            'musicians' => $arrMusicians, 'instruments' => $arrInstruments, 'meta' => $meta
-        );
-
     }
 
 

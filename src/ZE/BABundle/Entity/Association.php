@@ -11,7 +11,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 
 /**
@@ -27,7 +26,21 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 class Association
 {
 
-    use TimestampableEntity;
+    /**
+     * @var \DateTime $created
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    protected $createdAt;
+
+    /**
+     * @var \DateTime $updated
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    protected $updatedAt;
     /**
      * @var string
      *
@@ -121,6 +134,14 @@ class Association
 
         return $this;
     }
+    
+    public function setDocuments(ArrayCollection $documents)
+    {
+        $this->removeAllDocuments();
+        foreach($documents as $document){
+            $this->addDocument($document);
+        }
+    }
 
     /**
      * Remove documents
@@ -155,6 +176,13 @@ class Association
         return $this;
     }
 
+    public function setAddresses(ArrayCollection $addresses)
+    {
+        $this->removeAllAddresses();
+        foreach($addresses as $address){
+            $this->addAddress($address);
+        }
+    }
     /**
      * Remove addresss
      *
@@ -185,6 +213,14 @@ class Association
         $this->genres[] = $genres;
 
         return $this;
+    }
+    
+    public function setGenres(ArrayCollection $genres)
+    {
+        $this->removeAllGenres();
+        foreach($genres as $genre){
+            $this->addGenre($genre);
+        }
     }
 
     /**
@@ -302,5 +338,35 @@ class Association
         $class = explode('\\', get_class($this));
         return strtolower( array_pop($class) );
 
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function removeAllGenres()
+    {
+        foreach ($this->genres as $genre) {
+            $this->removeGenre($genre);
+        }
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function removeAllDocuments()
+    {
+        foreach ($this->documents as $document) {
+            $this->removeDocument($document);
+        }
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function removeAllAddresses()
+    {
+        foreach ($this->addresses as $address) {
+            $this->removeAddress($address);
+        }
     }
 }

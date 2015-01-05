@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use ZE\BABundle\Entity\Band;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use ZE\BABundle\Exception\InvalidFormException;
 
 
 class BandsController extends FOSRestController
@@ -69,15 +70,31 @@ class BandsController extends FOSRestController
      *
      * @ApiDoc(
      *  resource=true,
-     *  description="Get Specific Band Info",
+     *  description="Update Band Info",
      *  filters={
-     *      {"name"="slug", "dataType"="string"},
+     *      {"name"="id", "dataType"="integer"},
      *  }
      * )
      */
 
-    public function putUserAction($slug)
-    {} // "put_user"      [PUT] /users/{slug}
+    public function putBandAction(Request $request, $id)
+    {
+        try {
+
+            $this->container->get('zeba_band.handler')->post($request,$id);
+            $data = $this->get('zeba.band_service')->findBands(null,null,
+                array('bandId'=>$id)
+            );
+            $view = $this->view($data, 200);
+            return $this->handleView($view);
+        } catch (Exception $e){
+            $view = $this->view(array('form' => $e->getMessage()), 500);
+
+            return $this->handleView($view);
+        }
+
+
+    }
 
     public function indexAction()
     {

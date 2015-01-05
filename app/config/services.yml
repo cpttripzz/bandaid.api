@@ -7,7 +7,17 @@ services:
     zeba_user_provider:
         class: "%zeba_user_provider.class%"
         arguments: [@fos_user.user_manager,{facebook: facebook_id, google: google_id, github: githubID}]
-
+    zeba_band.handler:
+        class: ZE\BABundle\Handler\BandHandler
+        arguments:
+            - @doctrine.orm.entity_manager
+            - ZE\BABundle\Entity\Band
+            - @form.factory
+            - @security.authorization_checker
+    zeba_doctrine.hydrator:
+        class:  ZE\BABundle\Doctrine\Hydrator\ArrayHydrator
+        arguments:
+            - @doctrine.orm.entity_manager
     zeba_cacheservice:
         class: ZE\BABundle\Service\Cached\ServiceAbstract
         abstract:  true
@@ -17,14 +27,19 @@ services:
     zeba.band_service:
         class: ZE\BABundle\Service\Cached\BandService
         parent: zeba_cacheservice
+        arguments:
+            - @zeba.genre_service
     zeba.userbands_service:
         class: ZE\BABundle\Service\Cached\UserBandsService
         parent: zeba_cacheservice
+    zeba.genre_service:
+        class: ZE\BABundle\Service\Cached\GenreService
+        parent: zeba_cacheservice
     zeba.homeitems_service:
-            class: ZE\BABundle\Service\Cached\HomeItemsService
-            parent: zeba_cacheservice
-            arguments:
-                - @zeba.band_service
+        class: ZE\BABundle\Service\Cached\HomeItemsService
+        parent: zeba_cacheservice
+        arguments:
+            - @zeba.band_service
     zeba.useritems_service:
         class: ZE\BABundle\Service\Cached\UserItemsService
         parent: zeba_cacheservice
@@ -41,11 +56,6 @@ services:
         public:     false
         tags:
             - { name: security.voter }
-    zeba.twig.file.exists.extension:
-        class: ZE\BABundle\Twig\Extension\FileExistsExtension
-        tags:
-            - { name: twig.extension" }
-
     zeba.listener.JoinBandRequestEvent:
         class: ZE\BABundle\EventListener\JoinBandRequestEventListener
         arguments:
