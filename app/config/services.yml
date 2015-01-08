@@ -24,6 +24,7 @@ services:
         arguments:
             - @doctrine_cache.providers.redis_cache
             - @doctrine.orm.entity_manager
+            - %sideload%
     zeba.band_service:
         class: ZE\BABundle\Service\Cached\BandService
         parent: zeba_cacheservice
@@ -32,6 +33,8 @@ services:
     zeba.userbands_service:
         class: ZE\BABundle\Service\Cached\UserBandsService
         parent: zeba_cacheservice
+        arguments:
+            - @zeba.genre_service
     zeba.genre_service:
         class: ZE\BABundle\Service\Cached\GenreService
         parent: zeba_cacheservice

@@ -11,9 +11,9 @@ namespace ZE\BABundle\Service\Cached;
 class HomeItemsService extends ServiceAbstract
 {
     protected $bandService;
-    public function __construct($cacheProvider,$entityManager,$bandService){
+    public function __construct($cacheProvider,$entityManager,$sideload,$bandService){
         $this->bandService = $bandService;
-        parent::__construct($cacheProvider,$entityManager);
+        parent::__construct($cacheProvider,$entityManager,$sideload);
     }
     public function getHomeItems($userId, $page, $limit)
     {
@@ -21,12 +21,16 @@ class HomeItemsService extends ServiceAbstract
         $homeItems= $this->bandService->findBands( $page, $limit,$userId,true);
 
         $arrBandIds = array();
-        foreach($homeItems['bands'] as $homeItem){
-            $arrBandIds[] = $homeItem['id'];
-        }
+
         $homeItems['homeitem']['id'] = 1;
         $homeItems['homeitem']['name'] = 'home items test';
-        $homeItems['homeitem']['bands'] = $arrBandIds;
+        if($this->sideload){
+            foreach($homeItems['bands'] as $key=>$homeItem){
+                $arrBandIds[] = $homeItem['id'];
+            }
+            $homeItems['homeitem']['bands'] = $arrBandIds;
+        }
+
         return $homeItems;
     }
     protected function sideloadEntity(&$arrEnt, &$arrAddress, &$arrGenres, &$arrCountries, &$arrCities, &$arrRegions, &$arrAddresses, &$arrInstruments=array())

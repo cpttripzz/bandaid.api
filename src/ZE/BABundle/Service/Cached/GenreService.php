@@ -15,7 +15,7 @@ class GenreService extends ServiceAbstract
 {
 
 
-    public function findGenres($page=null, $limit=null, $params = array())
+    public function findGenres($page = null, $limit = null, $params = array())
     {
 
         $dql = "
@@ -25,24 +25,27 @@ class GenreService extends ServiceAbstract
 
         $query = $this->em->createQuery($dql)
             ->setFirstResult(($page - 1) * $limit)
-            ->setMaxResults($limit)
-            ;
+            ->setMaxResults($limit);
         $query->getArrayResult();
         $paginator = new Paginator($query, $fetchJoinCollection = true);
         $totalItems = count($paginator);
         $pagesCount = 1;
-        if($page && $limit) {
+        if ($page && $limit) {
             $pagesCount = ceil($totalItems / (int)$limit);
         }
-        $arrEntity = iterator_to_array($paginator, true);
+        $arrEntity = iterator_to_array($paginator, false);
 
 
         $meta = array('total' => $totalItems, 'pagesCount' => $pagesCount);
+        if ($this->sideload) {
+            return array(
+                'genres' => $arrEntity,
+                'meta' => $meta,
+            );
+        } else {
+            return $arrEntity;
+        }
 
-        return array(
-            'genres'=> $arrEntity,
-            'meta' => $meta,
-        );
 
     }
 

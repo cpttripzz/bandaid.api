@@ -15,9 +15,9 @@ class BandService extends ServiceAbstract
 {
     protected $genreService;
 
-    public function __construct($cacheProvider,$entityManager,$genreService){
+    public function __construct($cacheProvider,$entityManager,$sideload,$genreService){
         $this->genreService = $genreService;
-        parent::__construct($cacheProvider,$entityManager);
+        parent::__construct($cacheProvider,$entityManager,$sideload);
     }
 
     /**
@@ -29,10 +29,12 @@ class BandService extends ServiceAbstract
     public function findBands($page, $limit, $params = array())
     {
 //        $bands = $this->getCachedByParams(array('userId' => $userId, 'page' => $page, 'limit' => $limit, $params));
-
+        if(!(int) $page){
+            $page = 1;
+        }
 
         $dql = "
-              SELECT b, bg, ba, br, bac, bacc, m, mg, mi, ma, mr, mac, macc, bd, md,bu
+              SELECT b, bg, ba, br, bac, bacc, m, mg, mi, ma, mr, mac, macc, bd, md,bu.id AS userId
               FROM ZEBABundle:Band b
               LEFT JOIN b.genres bg
               LEFT JOIN b.addresses ba
@@ -78,34 +80,41 @@ class BandService extends ServiceAbstract
         if($page && $limit) {
             $pagesCount = ceil($totalItems / (int)$limit);
         }
-        $arrEntity = iterator_to_array($paginator, true);
+        $arrEntity = iterator_to_array($paginator, false);
         $arrGenres = $arrAddresses = $arrInstruments = $arrCities =
         $arrCountries = $arrRegions = $arrMusicians = $arrDocuments = array();
 
-
-        foreach ($arrEntity as $keyEntity => &$arrEnt) {
-            $arrEnt['userId'] = $arrEnt['user']['id'];
-            unset($arrEnt['user']);
-            $this->sideloadEntity($arrEnt, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses, $arrDocuments);
-            foreach ($arrEnt['musicians'] as &$musician) {
-                $this->sideloadEntity($musician, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses, $arrDocuments, $arrInstruments);
-            }
-            $this->sideloadData('musicians', $arrEnt, $arrMusicians);
+        if($this->sideload) {
+            foreach ($arrEntity as $keyEntity => &$arrEnt) {
+                $arrEnt['userId'] = $arrEnt['user']['id'];
+                unset($arrEnt['user']);
+                $this->sideloadEntity($arrEnt, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses, $arrDocuments);
+                foreach ($arrEnt['musicians'] as &$musician) {
+                    $this->sideloadEntity($musician, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses, $arrDocuments, $arrInstruments);
+                }
+                $this->sideloadData('musicians', $arrEnt, $arrMusicians);
 //            unset($arrEnt['musicians']);
+            }
         }
         $meta = array('total' => $totalItems, 'pagesCount' => $pagesCount);
         if($entitySingular){
             $entityReturnName = 'band';
             $arrEntity = reset($arrEntity);
         }
-        $arrGenres = $this->genreService->findGenres();
-        $arrGenres = $arrGenres['genres'];
-        return array(
-            $entityReturnName => $arrEntity, 'genres' => $arrGenres, 'countries' => $arrCountries,
-            'regions' => $arrRegions, 'cities' => $arrCities, 'addresses' => $arrAddresses,
-            'documents' => $arrDocuments, 'musicians' => $arrMusicians, 'instruments' => $arrInstruments,
-            'meta' => $meta,
-        );
+
+        if($this->sideload){
+            $arrGenres = $this->genreService->findGenres();
+            $arrGenres = $arrGenres['genres'];
+            return array(
+                $entityReturnName => $arrEntity, 'genres' => $arrGenres, 'countries' => $arrCountries,
+                'regions' => $arrRegions, 'cities' => $arrCities, 'addresses' => $arrAddresses,
+                'documents' => $arrDocuments, 'musicians' => $arrMusicians, 'instruments' => $arrInstruments,
+                'meta' => $meta,
+            );
+        } else {
+            return reset($arrEntity);
+        }
+
     }
 
 

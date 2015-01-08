@@ -13,6 +13,12 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class UserBandsService extends ServiceAbstract
 {
+    protected $genreService;
+
+    public function __construct($cacheProvider,$entityManager,$sideload,$genreService){
+        $this->genreService = $genreService;
+        parent::__construct($cacheProvider,$entityManager,$sideload);
+    }
     /**
      * @param $userId
      * @param $page
@@ -21,11 +27,13 @@ class UserBandsService extends ServiceAbstract
      */
     public function findAll($page, $limit,$userId)
     {
-        $bands = $this->getCachedByParams(array('userId' => $userId, 'page' => $page, 'limit' => $limit));
-        if (empty($bands)) {
+        if(!(int) $page){
+            $page = 1;
+        }
+
 
             $dql = "
-              SELECT b, bg, ba, br, bac, bacc, bd, bu
+              SELECT b, bg, ba, br, bac, bacc, bd, bu.id AS userId
               FROM ZEBABundle:Band b
               LEFT JOIN b.genres bg
               LEFT JOIN b.addresses ba
@@ -48,23 +56,33 @@ class UserBandsService extends ServiceAbstract
             $paginator = new Paginator($query, $fetchJoinCollection = true);
             $totalItems = count($paginator);
             $pagesCount = ceil($totalItems / $limit);
-            $arrEntity = iterator_to_array($paginator,true);
+            $arrEntity = iterator_to_array($paginator,false);
             $arrGenres = $arrAddresses = $arrCities = $arrCountries = $arrRegions = $arrDocuments = array();
 
+        if($this->sideload) {
 
-            foreach($arrEntity as $keyEntity => &$arrEnt){
-                $arrEnt['userId'] = $arrEnt['user']['id'];
-                unset($arrEnt['user']);
-                $this->sideloadEntity($arrEnt, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses,$arrDocuments);
+            foreach ($arrEntity as $keyEntity => &$arrEnt) {
+                $this->sideloadEntity($arrEnt, $arrAddress, $arrGenres, $arrCountries, $arrCities, $arrRegions, $arrAddresses, $arrDocuments);
             }
-            $meta = array('total'=>$totalItems,'pagesCount'=>$pagesCount);
+        }
+        $meta = array('total'=>$totalItems,'pagesCount'=>$pagesCount);
+        $arrGenres = $this->genreService->findGenres();
 
+        if($this->sideload){
+            $arrGenres = $arrGenres['genres'];
             return array(
                 'bands' => $arrEntity,'genres' =>$arrGenres,'countries' =>$arrCountries,
                 'regions' => $arrRegions,'cities' =>$arrCities,'addresses' => $arrAddresses,
                 'documents' => $arrDocuments, 'meta' =>$meta
             );
+        } else {
+            return array(
+                'bands' => $arrEntity,'genres' =>$arrGenres,
+                'meta' => $meta,
+            );
         }
+
+
     }
 
 

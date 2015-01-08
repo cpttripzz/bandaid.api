@@ -25,20 +25,26 @@ class ArrayHydrator {
         foreach ($array as $property=>$value)
         {
             if (is_array($value)){
-                $namespace = StringUtil::before_last('\\',get_class($entity));
-                $newPropArrayCollection = new ArrayCollection();
-                $repository = $this->em->getRepository($namespace . '\\' . Inflector::singularize($property));
-                $entity->{'removeAll' . ucwords($property)}($newPropArrayCollection);
-                $this->em->persist($entity);
-                $this->em->flush($entity);
-                foreach($value as $propId){
-                    $propertyEntity = $repository->find($propId);
-                    $newPropArrayCollection->add($propertyEntity);
+                try {
+                    $namespace = StringUtil::before_last('\\', get_class($entity));
+                    $newPropArrayCollection = new ArrayCollection();
+                    $repository = $this->em->getRepository($namespace . '\\' . Inflector::singularize($property));
+                    $entity->{'removeAll' . ucwords($property)}($newPropArrayCollection);
+                    $this->em->persist($entity);
+                    $this->em->flush($entity);
+                    foreach ($value as $propId) {
+                        $propertyEntity = $repository->find($propId);
+                        $newPropArrayCollection->add($propertyEntity);
+                    }
+                    $entity->{'set' . ucwords($property)}($newPropArrayCollection);
+                } catch (\Exception $e){
+                    continue;
                 }
-                $entity->{'set' .ucwords($property)}($newPropArrayCollection);
-
             } else {
-                $entity->{'set' .ucwords($property)}($value);
+                $prop = 'set' .ucwords($property);
+                if(property_exists($entity, $prop )) {
+                    $entity->{$prop}($value);
+                }
             }
             $this->em->persist($entity);
             $this->em->flush($entity);

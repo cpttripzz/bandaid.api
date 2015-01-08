@@ -49,11 +49,13 @@ class BandHandler
             throw new AccessDeniedException('Unauthorised access!');
         }
 
-        $arrPropsToUnset = array('userId','type','useritems','createdAt','updatedAt');
+        $arrPropsToUnset = array('userId','type','useritems','createdAt','updatedAt','id');
         $arrPropsToNullify = array('slug');
 
         $parameters = $request->request->all();
-        $parameters = $parameters['band'];
+        if(isset($parameters['band'])) {
+            $parameters = $parameters['band'];
+        }
         foreach($arrPropsToNullify as $propToNullify){
             $parameters[$propToNullify] = null;
         }
