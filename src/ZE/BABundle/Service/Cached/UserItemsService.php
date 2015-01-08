@@ -11,9 +11,9 @@ namespace ZE\BABundle\Service\Cached;
 class UserItemsService extends ServiceAbstract
 {
     protected $userBandsService;
-    public function __construct($cacheProvider,$entityManager,$userBandsService){
+    public function __construct($cacheProvider,$entityManager,$sideload,$userBandsService){
         $this->userBandsService = $userBandsService;
-        parent::__construct($cacheProvider,$entityManager);
+        parent::__construct($cacheProvider,$entityManager,$sideload);
     }
     public function findAll( $page, $limit, $userId)
     {
@@ -21,9 +21,7 @@ class UserItemsService extends ServiceAbstract
         $userItems= $this->userBandsService->findAll( $page, $limit,$userId);
 
         $arrBandIds = array();
-        foreach($userItems['bands'] as $userItem){
-            $arrBandIds[] = $userItem['id'];
-        }
+
         $userItems['useritem']['id'] = 1;
         $userItems['useritem']['name'] = 'home items test';
         $userItems['useritem']['bands'] = $arrBandIds;

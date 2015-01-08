@@ -1,0 +1,31 @@
+instrument:
+  -
+    id: 1
+    name: Guitar
+  -
+    id: 2
+    name: Bass Guitar
+  -
+    id: 3
+    name: Drums
+  -
+    id: 4
+    name: Saxophone
+  -
+    id: 5
+    name: Piano
+  -
+    id: 6
+    name: Trumpet
+  -
+    id: 7
+    name: Tuba
+  -
+    id: 8
+    name: Trombone
+  -
+    id: 9
+    name: Violin
+  -
+    id: 10
+    name: Flute

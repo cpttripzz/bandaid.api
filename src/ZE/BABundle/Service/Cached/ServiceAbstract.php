@@ -14,10 +14,12 @@ class ServiceAbstract
 {
     protected $cacheProvider;
     protected $em;
+    protected $sideload;
 
-    public function __construct($cacheProvider,$entityManager){
+    public function __construct($cacheProvider,$entityManager, $sideload){
         $this->cacheProvider = $cacheProvider;
         $this->em = $entityManager;
+        $this->sideload = $sideload;
     }
 
     protected function getCachedByParams($params)

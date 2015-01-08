@@ -11,9 +11,9 @@ namespace ZE\BABundle\Service\Cached;
 class HomeItemsService extends ServiceAbstract
 {
     protected $bandService;
-    public function __construct($cacheProvider,$entityManager,$bandService){
+    public function __construct($cacheProvider,$entityManager,$sideload,$bandService){
         $this->bandService = $bandService;
-        parent::__construct($cacheProvider,$entityManager);
+        parent::__construct($cacheProvider,$entityManager,$sideload);
     }
     public function getHomeItems($userId, $page, $limit)
     {

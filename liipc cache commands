@@ -1,0 +1,56 @@
+app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/LoadCountries
+for i in `seq 1 10`;
+do
+    echo "$i"
+    app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/CreateUsers
+done
+
+app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/AssignBandsMusicians
+app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/BandsVacancies
+
+app/console liip:imagine:cache:resolve web/img/users/
+app/console liip:imagine:cache:resolve img/genres/blues.jpg
+app/console liip:imagine:cache:resolve img/flags/il.png
+app/console liip:imagine:cache:resolve img/instruments/piano.png
+
+sudo chmod -R 777 web/img/*
+sudo chmod -R 777 web/media/cache/*
+sudo sudo chmod -R 777 web/media/cache/*
+chmod 777 -R web/media/cache/assoc/img/users
+
+
+HTTPDUSER=`ps aux | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+sudo setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
+sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
+
+app/console assetic:dump
+
+
+history | cut -c 8-
+
+app/console fos:user:create admin admin@admin.com 123456 --super-admin
+
+
+SELECT
+  *
+FROM
+  band_musician
+  INNER JOIN association
+    ON band_musician.musician_id = association.id
+WHERE `type` = 'musician'
+  AND band_id = 4
+
+php app/console ze:babundle:client:create --redirect-uri="http://bandaid.com/app_dev.php/" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" test-zach
+
+
+
+
+
+
+  http://bandaid.com/app_dev.php/oauth/v2/token?client_id=2_5drbln020lk4g8gs4008ks08kggc0w4wgko48og8k0cwkggo88&client_secret=4wl5w8xbmoiss8gwkwgkk00woc8swscw8kkoc0gogooc00wo8k&grant_type=client_credentials
+
+  http://bandaid.com/app_dev.php/oauth/v2/auth?client_id=2_5drbln020lk4g8gs4008ks08kggc0w4wgko48og8k0cwkggo88&&response_type=code&redirect_uri=http://bandaid.com/app_dev.php/
+
+
+export PHP_IDE_CONFIG='serverName=localhost'
+export XDEBUG_CONFIG='idekey=PHPSTORM'

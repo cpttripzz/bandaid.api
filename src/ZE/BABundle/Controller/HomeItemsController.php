@@ -27,14 +27,14 @@ class HomeItemsController extends FOSRestController
     {
         $userId = null;
         try {
-        if( $this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
-            $user = $this->get('security.context')->getToken()->getUser();
-            $userId = $user->getId();
-        }
-        } catch (AuthenticationCredentialsNotFoundException $e){}
+            if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+                $user = $this->get('security.token_storage')->getToken()->getUser();
+                $userId = $user->getId();
+            }
+        } catch (AuthenticationCredentialsNotFoundException $e) {}
 
         $data = $this->get('zeba.homeitems_service')->getHomeItems(
-            $userId,$this->get('request')->query->get('page', 1),$this->get('request')->query->get('limit', 10)
+            $userId, $this->get('request')->query->get('page', 1), $this->get('request')->query->get('limit', 16)
         );
 
         $view = $this->view($data, 200);

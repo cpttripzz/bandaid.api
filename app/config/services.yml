@@ -24,6 +24,7 @@ services:
         arguments:
             - @doctrine_cache.providers.redis_cache
             - @doctrine.orm.entity_manager
+            - %sideload%
     zeba.band_service:
         class: ZE\BABundle\Service\Cached\BandService
         parent: zeba_cacheservice
