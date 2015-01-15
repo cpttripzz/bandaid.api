@@ -56,23 +56,24 @@ class BandService extends ServiceAbstract
         if (!empty($params['withVacancies'])) {
             $dql .= ' INNER JOIN b.bandVacancyAssociations bva ';
         }
-        $entitySingular = false;
+        $entitySingular = ! empty(array_intersect(array('bandId','bandSlug'),array_keys($params)));
         $entityReturnName = 'bands';
-        if (!empty($params['bandId'])) {
-            $entitySingular = true;
-            $dql .= ' WHERE b.id = ' . (int)$params['bandId'];
-        }
-        if (!empty($params['bandSlug'])) {
-            $entitySingular = true;
-            $dql .= ' WHERE b.slug = :bandSlug';
-        }
+
+        $dqlParams = array(
+            'bandId' => 'b.id = ',
+            'bandSlug' => 'b.slug = ',
+            'notUser' => 'bu.id != '
+        );
+
+        $dql .= $this->setDqlParamsString($dqlParams,$params);
+
         $query = $this->em->createQuery($dql)
             ->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit)
             ;
-        if (!empty($params['bandSlug'])) {
-            $query->setParameter('bandSlug', $params['bandSlug']);
-        }
+
+        $this->setDqlParams($query,$params,$dqlParams);
+
         $query->getArrayResult();
         $paginator = new Paginator($query, $fetchJoinCollection = true);
         $totalItems = count($paginator);
@@ -112,7 +113,12 @@ class BandService extends ServiceAbstract
                 'meta' => $meta,
             );
         } else {
-            return reset($arrEntity);
+            if($entitySingular){
+                return empty($arrEntity) ? array() : reset($arrEntity);
+            } else {
+                return array( $entityReturnName => $arrEntity, 'meta' =>$meta);
+            }
+
         }
 
     }

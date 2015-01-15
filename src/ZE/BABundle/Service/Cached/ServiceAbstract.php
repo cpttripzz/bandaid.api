@@ -22,6 +22,29 @@ class ServiceAbstract
         $this->sideload = $sideload;
     }
 
+    protected function setDqlParamsString($dqlParams,$params)
+    {
+        $dqlWhere =null;
+        foreach($dqlParams as $dqlParam => $condition){
+            if(!empty($params[$dqlParam])){
+                if (!$dqlWhere){
+                    $dqlWhere ='WHERE ' . $condition . ':' .$dqlParam;;
+                } else {
+                    $dqlWhere .= ' AND ' . $condition . ':' . $dqlParam;
+                }
+            }
+        }
+        return $dqlWhere;
+    }
+
+    protected function setDqlParams($query,$params, $dqlParams)
+    {
+        foreach($dqlParams as $dqlParam => $condition){
+            if(!empty($params[$dqlParam])){
+                $query->setParameter($dqlParam, $params[$dqlParam]);
+            }
+        }
+    }
     protected function getCachedByParams($params)
     {
         $key = $this->getKeyFromParams($params);

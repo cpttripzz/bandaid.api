@@ -18,13 +18,12 @@ class HomeItemsService extends ServiceAbstract
     public function getHomeItems($userId, $page, $limit)
     {
         $homeItems = array();
-        $homeItems= $this->bandService->findBands( $page, $limit,$userId,true);
+        $homeItems= $this->bandService->findBands( $page, $limit,array('userNot' =>$userId));
 
-        $arrBandIds = array();
-
-        $homeItems['homeitem']['id'] = 1;
-        $homeItems['homeitem']['name'] = 'home items test';
         if($this->sideload){
+            $arrBandIds = array();
+            $homeItems['homeitem']['id'] = 1;
+            $homeItems['homeitem']['name'] = 'home items test';
             foreach($homeItems['bands'] as $key=>$homeItem){
                 $arrBandIds[] = $homeItem['id'];
             }

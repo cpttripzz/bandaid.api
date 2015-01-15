@@ -38,5 +38,6 @@ security:
                 create_entry_point:      true      # When no authentication details are provided, create a default entry point that returns a 401 response
 
     access_control:
-        - { path: ^/api/open/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/secure/*, roles: [ IS_AUTHENTICATED_FULLY ] }
+        - { path: ^/api/open/getToken$, role: IS_AUTHENTICATED_ANONYMOUSLY,requires_channel: https }
+        - { path: ^/api/open/*, role: IS_AUTHENTICATED_ANONYMOUSLY,requires_channel: https }
+        - { path: ^/api/secure/*, roles: [ IS_AUTHENTICATED_FULLY ], requires_channel: https  }

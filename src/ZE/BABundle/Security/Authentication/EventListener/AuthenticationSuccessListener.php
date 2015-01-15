@@ -20,7 +20,7 @@ class AuthenticationSuccessListener {
 
         $data['username'] = $user->getUsername();
         $data['userId'] = $user->getId();
-
+        $data['roles'] = $user->getRoles();
         $event->setData($data);
     }
 } 
