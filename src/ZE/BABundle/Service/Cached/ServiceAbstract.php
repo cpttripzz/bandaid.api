@@ -7,8 +7,8 @@
  */
 namespace ZE\BABundle\Service\Cached;
 
-use Knp\Bundle\PaginatorBundle\Definition\PaginatorAwareInterface;
-use Knp\Component\Pager\Paginator;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 
 class ServiceAbstract
 {
@@ -16,16 +16,31 @@ class ServiceAbstract
     protected $em;
     protected $sideload;
 
-    public function __construct($cacheProvider,$entityManager, $sideload){
+    public function __construct($cacheProvider, $entityManager, $sideload)
+    {
         $this->cacheProvider = $cacheProvider;
         $this->em = $entityManager;
         $this->sideload = $sideload;
     }
 
-    protected function setDqlParamsString($dqlParams,$params)
+    protected function setDqlWhere($params, $tableAlias="",$condition='AND')
+    {
+        $dqlWhere = null;
+        foreach ($params as $name => $value) {
+            $filter = $tableAlias . '.'. $name. '=' . ':' . $name;
+            if (!$dqlWhere) {
+                $dqlWhere = ' WHERE ' . $filter;
+            } else {
+                $dqlWhere .= ' '.$condition .' ' . $filter;
+            }
+        }
+        return $dqlWhere;
+    }
+    protected function setDqlCustomParamsWhere($dqlParams,$params)
     {
         $dqlWhere =null;
         foreach($dqlParams as $dqlParam => $condition){
+
             if(!empty($params[$dqlParam])){
                 if (!$dqlWhere){
                     $dqlWhere ='WHERE ' . $condition . ':' .$dqlParam;;
@@ -37,23 +52,25 @@ class ServiceAbstract
         return $dqlWhere;
     }
 
-    protected function setDqlParams($query,$params, $dqlParams)
+    protected function setDqlParams($query, $params, $dqlParams)
     {
-        foreach($dqlParams as $dqlParam => $condition){
-            if(!empty($params[$dqlParam])){
+        foreach ($dqlParams as $dqlParam => $condition) {
+            if (!empty($params[$dqlParam])) {
                 $query->setParameter($dqlParam, $params[$dqlParam]);
             }
         }
     }
+
     protected function getCachedByParams($params)
     {
         $key = $this->getKeyFromParams($params);
         return $this->cacheProvider->fetch($key);
     }
-    protected function setCachedByParams($params,$data)
+
+    protected function setCachedByParams($params, $data)
     {
         $key = $this->getKeyFromParams($params);
-        return $this->cacheProvider->save($key,$data);
+        return $this->cacheProvider->save($key, $data);
     }
 
 
@@ -74,17 +91,18 @@ class ServiceAbstract
         return $key;
     }
 
-    public function sideloadData($keyToProcess,&$arrToProcess, &$arrToStoreRelations){
-        if(!isset($arrToProcess[$keyToProcess])){
+    public function sideloadData($keyToProcess, &$arrToProcess, &$arrToStoreRelations)
+    {
+        if (!isset($arrToProcess[$keyToProcess])) {
             return false;
         }
         $arrToStoreIds = array();
-        if(is_array($arrToProcess[$keyToProcess])) {
-            foreach ($arrToProcess[$keyToProcess] as $key =>$arrProcessed) {
-                if(is_array($arrProcessed)) {
-                    $arrToStoreIds[] = isset($arrProcessed['id']) ? $arrProcessed['id']: $arrProcessed[0];
+        if (is_array($arrToProcess[$keyToProcess])) {
+            foreach ($arrToProcess[$keyToProcess] as $key => $arrProcessed) {
+                if (is_array($arrProcessed)) {
+                    $arrToStoreIds[] = isset($arrProcessed['id']) ? $arrProcessed['id'] : $arrProcessed[0];
                 } else {
-                    if($key==='id'){
+                    if ($key === 'id') {
                         $arrToStoreIds[] = $arrProcessed;
                     }
                 }
@@ -92,18 +110,50 @@ class ServiceAbstract
         } else {
             return false;
         }
-        if(empty($arrToProcess[$keyToProcess][0])){
-            if ( empty($arrToProcess[$keyToProcess])){
+        if (empty($arrToProcess[$keyToProcess][0])) {
+            if (empty($arrToProcess[$keyToProcess])) {
                 return false;
             }
             $arrToAddToRelations = array($arrToProcess[$keyToProcess]);
         } else {
             $arrToAddToRelations = $arrToProcess[$keyToProcess];
         }
-        $arrToStoreRelations = array_merge($arrToStoreRelations,$arrToAddToRelations);
+        $arrToStoreRelations = array_merge($arrToStoreRelations, $arrToAddToRelations);
         $arrToStoreRelations = array_map("unserialize", array_unique(array_map("serialize", $arrToStoreRelations)));
         $arrToProcess[$keyToProcess] = $arrToStoreIds;
+    }
 
+    /**
+     * @param $params
+     * @param $dql
+     * @return array
+     */
+    public function getPaginatedArray($dql,$tableAlias, $params=array())
+    {
+        $page = $limit = 1;
+        if (!empty($params['page'])) {
+            $page = $params['page'];
+            unset($params['page']);
+        }
+        if (!empty($params['limit'])) {
+            $limit = $params['limit'];
+            unset($params['limit']);
+        }
+        $dql .= $this->setDqlWhere($params, $tableAlias , 'OR');
+        $query = $this->em->createQuery($dql)
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit);
+        $this->setDqlParams($query, $params, $params);
+        $query->getArrayResult();
+        $paginator = new Paginator($query, $fetchJoinCollection = true);
+        $totalItems = count($paginator);
+        $pagesCount = 1;
+        if ($page && $limit) {
+            $pagesCount = ceil($totalItems / (int)$limit);
+        }
+        $meta = array('total' => $totalItems, 'pagesCount' => $pagesCount);
+        $arrEntity = iterator_to_array($paginator, false);
+        return array($meta, $arrEntity);
     }
 
 }

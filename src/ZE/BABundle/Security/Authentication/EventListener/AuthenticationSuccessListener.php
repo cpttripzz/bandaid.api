@@ -20,7 +20,12 @@ class AuthenticationSuccessListener {
 
         $data['username'] = $user->getUsername();
         $data['userId'] = $user->getId();
-        $data['roles'] = $user->getRoles();
+        $roles = $user->getRoles();
+
+        if (in_array('ROLE_ADMIN',$roles)){
+            unset ($roles[array_search('ROLE_USER',$roles)]);
+        }
+        $data['roles'] = $roles;
         $event->setData($data);
     }
 } 

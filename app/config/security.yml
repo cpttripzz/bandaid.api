@@ -4,7 +4,6 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN,ROLE_ALLOWED_TO_SWITCH,ROLE_USER
 
     providers:
         fos_userbundle:
@@ -38,6 +37,7 @@ security:
                 create_entry_point:      true      # When no authentication details are provided, create a default entry point that returns a 401 response
 
     access_control:
+        - { path: ^/api/secure/admin/, roles: [ ROLE_ADMIN ], requires_channel: https  }
         - { path: ^/api/open/getToken$, role: IS_AUTHENTICATED_ANONYMOUSLY,requires_channel: https }
         - { path: ^/api/open/*, role: IS_AUTHENTICATED_ANONYMOUSLY,requires_channel: https }
         - { path: ^/api/secure/*, roles: [ IS_AUTHENTICATED_FULLY ], requires_channel: https  }

@@ -1,0 +1,165 @@
+---
+region:
+  -
+    id: 1
+    country_id: 205
+    short_name: CT
+    long_name: Catalonia
+    slug: catalonia
+  -
+    id: 2
+    country_id: 231
+    short_name: Wales
+    long_name: Wales
+    slug: wales
+  -
+    id: 3
+    country_id: 110
+    short_name: Tokyo
+    long_name: Tokyo
+    slug: tokyo
+  -
+    id: 4
+    country_id: 39
+    short_name: MB
+    long_name: Manitoba
+    slug: manitoba
+  -
+    id: 5
+    country_id: 39
+    short_name: ON
+    long_name: Ontario
+    slug: ontario
+  -
+    id: 6
+    country_id: 141
+    short_name: GRO
+    long_name: Guerrero
+    slug: guerrero
+  -
+    id: 7
+    country_id: 45
+    short_name: Beijing
+    long_name: Beijing
+    slug: beijing
+  -
+    id: 8
+    country_id: 232
+    short_name: NY
+    long_name: New York
+    slug: new-york
+  -
+    id: 9
+    country_id: 231
+    short_name: Scotland
+    long_name: Scotland
+    slug: scotland
+  -
+    id: 10
+    country_id: 205
+    short_name: Community of Madrid
+    long_name: Community of Madrid
+    slug: community-of-madrid
+  -
+    id: 11
+    country_id: 232
+    short_name: CA
+    long_name: California
+    slug: california
+  -
+    id: 12
+    country_id: 232
+    short_name: WA
+    long_name: Washington
+    slug: washington
+  -
+    id: 13
+    country_id: 39
+    short_name: BC
+    long_name: British Columbia
+    slug: british-columbia
+  -
+    id: 14
+    country_id: 232
+    short_name: OK
+    long_name: Oklahoma
+    slug: oklahoma
+  -
+    id: 15
+    country_id: 232
+    short_name: NJ
+    long_name: New Jersey
+    slug: new-jersey
+  -
+    id: 16
+    country_id: 39
+    short_name: QC
+    long_name: Quebec
+    slug: quebec
+  -
+    id: 17
+    country_id: 74
+    short_name: IDF
+    long_name: le-de-France
+    slug: ile-de-france
+  -
+    id: 18
+    country_id: 45
+    short_name: Shanghai
+    long_name: Shanghai
+    slug: shanghai
+  -
+    id: 19
+    country_id: 231
+    short_name: England
+    long_name: England
+    slug: england
+  -
+    id: 20
+    country_id: 232
+    short_name: FL
+    long_name: Florida
+    slug: florida
+  -
+    id: 21
+    country_id: 232
+    short_name: MI
+    long_name: Michigan
+    slug: michigan
+  -
+    id: 22
+    country_id: 64
+    short_name: Cairo Governorate
+    long_name: Cairo Governorate
+    slug: cairo-governorate
+  -
+    id: 23
+    country_id: 74
+    short_name: PACA
+    long_name: Provence-Alpes-Cte d'Azur
+    slug: provence-alpes-cote-d-azur
+  -
+    id: 24
+    country_id: 74
+    short_name: PACA
+    long_name: Provence-Alpes-Cte d'Azur
+    slug: provence-alpes-cote-d-azur-1
+  -
+    id: 25
+    country_id: 110
+    short_name: Osaka Prefecture
+    long_name: Osaka Prefecture
+    slug: osaka-prefecture
+  -
+    id: 26
+    country_id: 141
+    short_name: D.F.
+    long_name: Federal District
+    slug: federal-district
+  -
+    id: 27
+    country_id: 224
+    short_name: Nev?ehir
+    long_name: Nev?ehir
+    slug: nevsehir
+

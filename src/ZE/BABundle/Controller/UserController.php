@@ -1,46 +1,31 @@
 <?php
+
 namespace ZE\BABundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-use ZE\BABundle\Entity\User;
+use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
+use ZE\BABundle\Request\UserRegistrationRequest;
 
-class UserController extends Controller
+class UserController extends FOSRestController
 {
-    public function indexAction(){
-
-        if( !$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
-            return $this->render(
-                'ZEBABundle:Home:index.html.twig'
-            );
-        }
-        $user = $this->get('security.context')->getToken()->getUser();
-        $em = $this->getDoctrine()->getManager();
-
-        $bandsOwned = $em->getRepository('ZE\BABundle\Entity\Association')->getAllBandsOwnedByUserId($user->getId());
-        $musicianProfiles = $em->getRepository('ZE\BABundle\Entity\Association')->getAllMusiciansOwnedByUserId($user->getId());
-
-        return $this->render(
-            'ZEBABundle:User:index.html.twig',array('bands_owned' => $bandsOwned, 'musician_profiles' => $musicianProfiles)
-
-        );
-    }
-
-    public function showAction(User $user)
+    public function registerAction(Request $request)
     {
-        if (!$user) {
-            throw $this->createNotFoundException('Unable to find User entity.');
-        }
+        $parameters = $request->request->all();
+        $registrationRequest = new UserRegistrationRequest($parameters);
+        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
+        $data = $this->get('zeba.user_service')->registerUser($registrationRequest->options,$confirmationEnabled);
+        $view = $this->view($data, 200);
 
-        $em = $this->getDoctrine()->getManager();
-
-        $bandsOwned = $em->getRepository('ZE\BABundle\Entity\Association')->getAllBandsOwnedByUserId($user->getId());
-        $musicianProfiles = $em->getRepository('ZE\BABundle\Entity\Association')->getAllMusiciansOwnedByUserId($user->getId());
-
-        return $this->render(
-            'ZEBABundle:User:index.html.twig',array('bands_owned' => $bandsOwned, 'musician_profiles' => $musicianProfiles)
-
-        );
+        return $this->handleView($view);
     }
 
+    public function checkUserNameOrEmailAvailableAction(Request $request)
+    {
+        $parameters = $request->query->all();
+        $registrationRequest = new UserRegistrationRequest($parameters);
+        $data = $this->get('zeba.user_service')->userExists($registrationRequest->options);
+        $view = $this->view($data, 200);
+
+        return $this->handleView($view);
+    }
 }

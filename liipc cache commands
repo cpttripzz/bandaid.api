@@ -8,12 +8,12 @@ done
 app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/AssignBandsMusicians
 app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/BandsVacancies
 
-app/console liip:imagine:cache:resolve web/img/users/
+app/console liip:imagine:cache:resolve web/img/users/7db9f8115725724e249e3b01a7c8875f6f4ed016.jpeg
 app/console liip:imagine:cache:resolve img/genres/blues.jpg
 app/console liip:imagine:cache:resolve img/flags/il.png
 app/console liip:imagine:cache:resolve img/instruments/piano.png
 
-sudo chmod -R 777 web/img/*
+sudo chmod -R 777 web/img/
 sudo chmod -R 777 web/media/cache/*
 sudo sudo chmod -R 777 web/media/cache/*
 chmod 777 -R web/media/cache/assoc/img/users

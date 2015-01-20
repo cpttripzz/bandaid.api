@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "be409f61ec32fe672838478fd6ecee84",
+    "hash": "24a9cca3b7b8004195c81a62af88b41d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -581,17 +581,17 @@
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
-            "version": "dev-master",
+            "version": "v2.2.0",
             "target-dir": "Doctrine/Bundle/FixturesBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "9a5b5289eb22079ec139ba1eb06043d4b89c6677"
+                "reference": "c811f96f0cf83b997e3a3ed037cac729bbe3e803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/9a5b5289eb22079ec139ba1eb06043d4b89c6677",
-                "reference": "9a5b5289eb22079ec139ba1eb06043d4b89c6677",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/c811f96f0cf83b997e3a3ed037cac729bbe3e803",
+                "reference": "c811f96f0cf83b997e3a3ed037cac729bbe3e803",
                 "shasum": ""
             },
             "require": {
@@ -603,7 +603,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -617,16 +617,18 @@
             ],
             "authors": [
                 {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
                 },
                 {
                     "name": "Doctrine Project",
                     "homepage": "http://www.doctrine-project.org"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony DoctrineFixturesBundle",
@@ -635,7 +637,7 @@
                 "Fixture",
                 "persistence"
             ],
-            "time": "2014-09-16 05:03:04"
+            "time": "2013-09-05 11:23:37"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -1799,12 +1801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "5838f67a4fd31a459bb23066f3b6264f78dd083a"
+                "reference": "9e13d71524ee1fcd26800a0f00765853309d8f33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/5838f67a4fd31a459bb23066f3b6264f78dd083a",
-                "reference": "5838f67a4fd31a459bb23066f3b6264f78dd083a",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/9e13d71524ee1fcd26800a0f00765853309d8f33",
+                "reference": "9e13d71524ee1fcd26800a0f00765853309d8f33",
                 "shasum": ""
             },
             "require": {
@@ -1864,7 +1866,7 @@
                 "image",
                 "imagine"
             ],
-            "time": "2014-12-10 13:01:07"
+            "time": "2015-01-15 19:54:38"
         },
         {
             "name": "michelf/php-markdown",
@@ -3718,7 +3720,6 @@
         "friendsofsymfony/rest-bundle": 20,
         "jms/serializer-bundle": 20,
         "doctrine/migrations": 20,
-        "doctrine/doctrine-fixtures-bundle": 20,
         "liip/imagine-bundle": 20,
         "predis/predis": 20,
         "snc/redis-bundle": 20,
@@ -3729,6 +3730,7 @@
         "gfreeau/get-jwt-bundle": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.3"
     },

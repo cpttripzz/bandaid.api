@@ -25,7 +25,7 @@
         "willdurand/faker-bundle": "*",
         "doctrine/migrations": "dev-master",
         "doctrine/doctrine-migrations-bundle": "*",
-        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "liip/imagine-bundle": "dev-master",
         "predis/predis": "0.8.x-dev",
         "snc/redis-bundle": "1.1.x-dev",

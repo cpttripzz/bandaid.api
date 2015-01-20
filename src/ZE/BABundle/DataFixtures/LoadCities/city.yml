@@ -1,366 +1,374 @@
+---
 city:
   -
     id: 1
-    country_id: IL
+    country_id: 107
     name: Tel Aviv
-    region_id: 
     latitude: 32.0852999
     longitude: 34.7817676
+    slug: israel/tel-aviv
   -
     id: 2
-    country_id: CA
+    country_id: 39
     name: Toronto
-    region_id: 1
     latitude: 43.653226
     longitude: -79.3831843
+    slug: canada/toronto
   -
     id: 3
-    country_id: CA
+    country_id: 39
     name: Vancouver
-    region_id: 2
     latitude: 49.261226
     longitude: -123.1139268
+    slug: canada/vancouver
   -
     id: 4
-    country_id: IL
+    country_id: 107
     name: Jerusalem
-    region_id: 
     latitude: 31.768319
     longitude: 35.21371
+    slug: israel/jerusalem
   -
     id: 5
-    country_id: IL
+    country_id: 107
     name: Haifa
-    region_id: 
     latitude: 32.7940463
     longitude: 34.989571
+    slug: israel/haifa
   -
     id: 6
-    country_id: GB
+    country_id: 231
     name: London
-    region_id: 
     latitude: 51.508515
     longitude: -0.1254872
+    slug: united-kingdom/london
   -
     id: 7
-    country_id: US
+    country_id: 232
     name: New York
-    region_id: 3
     latitude: 40.7056308
     longitude: -73.9780035
+    slug: united-states/new-york
   -
     id: 8
-    country_id: US
+    country_id: 232
     name: Detroit
-    region_id: 4
     latitude: 42.331427
     longitude: -83.0457538
+    slug: united-states/detroit
   -
     id: 9
-    country_id: US
+    country_id: 232
     name: Los Angeles
-    region_id: 5
     latitude: 34.0522342
     longitude: -118.2436849
+    slug: united-states/los-angeles
   -
     id: 10
-    country_id: CA
+    country_id: 39
     name: Newmarket
-    region_id: 1
     latitude: 44.059187
     longitude: -79.461256
+    slug: canada/newmarket
   -
     id: 11
-    country_id: CA
+    country_id: 39
     name: Ottawa
-    region_id: 1
     latitude: 45.4215296
     longitude: -75.6971931
+    slug: canada/ottawa
   -
     id: 12
-    country_id: CA
+    country_id: 39
     name: Winnipeg
-    region_id: 6
     latitude: 49.8997541
     longitude: -97.1374937
+    slug: canada/winnipeg
   -
     id: 13
-    country_id: CA
+    country_id: 39
     name: London
-    region_id: 1
     latitude: 42.9869502
     longitude: -81.243177
+    slug: canada/london
   -
     id: 14
-    country_id: CA
+    country_id: 39
     name: Mississauga
-    region_id: 1
     latitude: 43.5890452
     longitude: -79.6441198
+    slug: canada/mississauga
   -
     id: 15
-    country_id: CA
+    country_id: 39
     name: Keswick
-    region_id: 1
     latitude: 44.2436111
     longitude: -79.4758333
+    slug: canada/keswick
   -
     id: 16
-    country_id: CA
+    country_id: 39
     name: Montreal
-    region_id: 7
     latitude: 45.5086699
     longitude: -73.5539925
+    slug: canada/montreal
   -
     id: 17
-    country_id: CA
+    country_id: 39
     name: Quebec City
-    region_id: 7
     latitude: 46.8032826
     longitude: -71.242796
+    slug: canada/quebec-city
   -
     id: 18
-    country_id: CA
+    country_id: 39
     name: Vancouver
-    region_id: 2
     latitude: 49.261226
     longitude: -123.1139268
+    slug: canada/vancouver-1
   -
     id: 19
-    country_id: GB
+    country_id: 231
     name: London
-    region_id: 
     latitude: 51.508515
     longitude: -0.1254872
+    slug: united-kingdom/london-1
   -
     id: 20
-    country_id: GB
+    country_id: 231
     name: Glasgow
-    region_id: 8
     latitude: 55.864237
     longitude: -4.251806
+    slug: united-kingdom/glasgow
   -
     id: 21
-    country_id: GB
+    country_id: 231
     name: Liverpool
-    region_id: 9
     latitude: 53.4083714
     longitude: -2.9915726
+    slug: united-kingdom/liverpool
   -
     id: 22
-    country_id: GB
+    country_id: 231
     name: Cardiff
-    region_id: 10
     latitude: 51.481581
     longitude: -3.17909
+    slug: united-kingdom/cardiff
   -
     id: 23
-    country_id: IL
+    country_id: 107
     name: Ramat Gan
-    region_id: 
     latitude: 32.068424
     longitude: 34.824785
+    slug: israel/ramat-gan
   -
     id: 24
-    country_id: IL
+    country_id: 107
     name: Jerusalem
-    region_id: 
     latitude: 31.768319
     longitude: 35.21371
+    slug: israel/jerusalem-1
   -
     id: 25
-    country_id: IL
+    country_id: 107
     name: Lod
-    region_id: 
     latitude: 31.951014
     longitude: 34.888075
+    slug: israel/lod
   -
     id: 26
-    country_id: IL
+    country_id: 107
     name: Ramat HaSharon
-    region_id: 
     latitude: 32.137793
     longitude: 34.840278
+    slug: israel/ramat-hasharon
   -
     id: 27
-    country_id: IL
+    country_id: 107
     name: Tel Aviv
-    region_id: 
     latitude: 32.0852999
     longitude: 34.7817676
+    slug: israel/tel-aviv-1
   -
     id: 28
-    country_id: IL
+    country_id: 107
     name: Netanya
-    region_id: 
     latitude: 32.321458
     longitude: 34.853196
+    slug: israel/netanya
   -
     id: 29
-    country_id: IL
+    country_id: 107
     name: Eilat
-    region_id: 
     latitude: 29.557669
     longitude: 34.951925
+    slug: israel/eilat
   -
     id: 30
-    country_id: IL
+    country_id: 107
     name: Haifa
-    region_id: 
     latitude: 32.7940463
     longitude: 34.989571
+    slug: israel/haifa-1
   -
     id: 31
-    country_id: IL
+    country_id: 107
     name: Beersheva
-    region_id: 
     latitude: 31.252973
     longitude: 34.791462
+    slug: israel/beersheva
   -
     id: 32
-    country_id: IL
+    country_id: 107
     name: Rishon LeTzion
-    region_id: 
     latitude: 31.9704266
     longitude: 34.7929641
+    slug: israel/rishon-letzion
   -
     id: 33
-    country_id: IL
+    country_id: 107
     name: Herzliyya
-    region_id: 
     latitude: 32.162413
     longitude: 34.844675
+    slug: israel/herzliyya
   -
     id: 34
-    country_id: US
+    country_id: 232
     name: Miami
-    region_id: 11
     latitude: 25.7890972
     longitude: -80.2040435
+    slug: united-states/miami
   -
     id: 35
-    country_id: US
+    country_id: 232
     name: San Antonio
-    region_id: 12
     latitude: 29.4241219
     longitude: -98.4936282
+    slug: united-states/san-antonio
   -
     id: 36
-    country_id: US
+    country_id: 232
     name: Oklahoma City
-    region_id: 13
     latitude: 35.4675602
     longitude: -97.5164276
+    slug: united-states/oklahoma-city
   -
     id: 37
-    country_id: US
+    country_id: 232
     name: Newark
-    region_id: 14
     latitude: 40.735657
     longitude: -74.1723667
+    slug: united-states/newark
   -
     id: 38
-    country_id: US
+    country_id: 232
     name: San Francisco
-    region_id: 5
     latitude: 37.7749295
     longitude: -122.4194155
+    slug: united-states/san-francisco
   -
     id: 39
-    country_id: US
+    country_id: 232
     name: Buffalo
-    region_id: 3
     latitude: 42.8864468
     longitude: -78.8783689
+    slug: united-states/buffalo
   -
     id: 40
-    country_id: US
+    country_id: 232
     name: Seattle
-    region_id: 15
     latitude: 47.6062095
     longitude: -122.3320708
+    slug: united-states/seattle
   -
     id: 41
-    country_id: ES
+    country_id: 205
     name: Barcelona
-    region_id: 16
     latitude: 41.3850639
     longitude: 2.1734035
+    slug: spain/barcelona
   -
     id: 42
-    country_id: ES
+    country_id: 205
     name: Madrid
-    region_id: 17
     latitude: 40.4167754
     longitude: -3.7037902
+    slug: spain/madrid
   -
     id: 43
-    country_id: CN
+    country_id: 45
     name: Hong Kong
-    region_id: 
     latitude: 22.396428
     longitude: 114.109497
+    slug: china/hong-kong
   -
     id: 44
-    country_id: CN
+    country_id: 45
     name: Shanghai
-    region_id: 18
     latitude: 31.230416
     longitude: 121.473701
+    slug: china/shanghai
   -
     id: 45
-    country_id: CN
+    country_id: 45
     name: Beijing
-    region_id: 19
     latitude: 39.90403
     longitude: 116.407526
+    slug: china/beijing
   -
     id: 46
-    country_id: FR
+    country_id: 74
     name: Paris
-    region_id: 20
     latitude: 48.856614
     longitude: 2.3522219
+    slug: france/paris
   -
     id: 47
-    country_id: FR
+    country_id: 74
     name: Nice
-    region_id: 21
     latitude: 43.7101728
     longitude: 7.2619532
+    slug: france/nice
   -
     id: 48
-    country_id: EG
+    country_id: 64
     name: Cairo
-    region_id: 22
     latitude: 30.0444196
     longitude: 31.2357116
+    slug: egypt/cairo
   -
     id: 49
-    country_id: JP
+    country_id: 110
     name: Tokyo
-    region_id: 23
     latitude: 35.6894875
     longitude: 139.6917064
+    slug: japan/tokyo
   -
     id: 50
-    country_id: JP
+    country_id: 110
     name: Osaka
-    region_id: 24
     latitude: 34.6937378
     longitude: 135.5021651
+    slug: japan/osaka
   -
     id: 51
-    country_id: MX
+    country_id: 141
     name: Mexico City
-    region_id: 25
     latitude: 19.4326077
     longitude: -99.133208
+    slug: mexico/mexico-city
   -
     id: 52
-    country_id: MX
+    country_id: 141
     name: Acapulco
-    region_id: 26
     latitude: 16.8636111
     longitude: -99.8825
+    slug: mexico/acapulco
+  -
+    id: 53
+    country_id: 224    27
+    name: Derinkuyu
+    latitude: 
+    longitude: 
+    slug: turkey/derinkuyu
 

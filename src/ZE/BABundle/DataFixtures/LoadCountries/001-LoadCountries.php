@@ -1,6 +1,5 @@
 <?php
-// src/Application/Sonata/UserBundle/DataFixtures/ORM/010-LoadUserData.php
-namespace Application\Sonata\UserBundle\DataFixtures\ORM;
+
 
 use Symfony\Component\HttpFoundation\File;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,10 +9,21 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Faker;
-use ZE\BABundle\Entity\Country;
+use Symfony\Component\Yaml\Yaml;
 
-class LoadUserData extends AbstractFixture
+use ZE\BABundle\Entity\Address;
+use ZE\BABundle\Entity\Band;
+
+use ZE\BABundle\Entity\City;
+use ZE\BABundle\Entity\Country;
+use ZE\BABundle\Entity\Document;
+use ZE\BABundle\Entity\Genre;
+use ZE\BABundle\Entity\Instrument;
+use ZE\BABundle\Entity\Item;
+use ZE\BABundle\Entity\Musician;
+use ZE\BABundle\Entity\Region;
+
+class LoadCountries extends AbstractFixture
     implements OrderedFixtureInterface,
     FixtureInterface,
     ContainerAwareInterface
@@ -36,7 +46,7 @@ class LoadUserData extends AbstractFixture
     }
 
 
-    public function loadCountries()
+    public function load(ObjectManager $manager)
     {
         $countries = array
         (
@@ -290,32 +300,23 @@ class LoadUserData extends AbstractFixture
             $country = new Country();
             $country->setName($name);
             $country->setCode($code);
-            $this->manager->persist($country);
+            $manager->persist($country);
         }
-        $this->manager->flush();
+        $manager->flush();
 
     }
+
+
+
 
 
     /**
-     * {@inheritDoc}
+     * Get the order of this fixture
+     *
+     * @return integer
      */
-    public function load(ObjectManager $manager)
+    function getOrder()
     {
-
-        $this->manager = $manager;
-
-        $this->loadCountries();
-
+        return  1;
     }
-
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getOrder()
-    {
-        return 1; // the order in which fixtures will be loaded
-    }
-
 }

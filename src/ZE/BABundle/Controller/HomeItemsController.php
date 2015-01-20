@@ -23,7 +23,7 @@ class HomeItemsController extends FOSRestController
      *  }
      * )
      */
-    public function getHomeitemAction($userslug)
+    public function getHomeitemsAction()
     {
         $userId = null;
         try {

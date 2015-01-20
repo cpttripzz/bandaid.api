@@ -11,3 +11,6 @@
 /bin/
 /composer.phar
 .idea
+web/img/users
+web/uploads
+web/media/cache

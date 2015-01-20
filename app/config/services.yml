@@ -48,7 +48,14 @@ services:
         parent: zeba_cacheservice
         arguments:
             - @zeba.userbands_service
-
+    zeba.admin_service:
+        class: ZE\BABundle\Service\Cached\AdminService
+        parent: zeba_cacheservice
+    zeba.user_service:
+        class: ZE\BABundle\Service\Cached\UserService
+        parent: zeba_cacheservice
+        arguments:
+            - @fos_user.user_manager
     zeba_api.event.authentication_success_listener:
         class: ZE\BABundle\Security\Authentication\EventListener\AuthenticationSuccessListener
         tags:

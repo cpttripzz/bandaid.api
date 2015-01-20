@@ -2,36 +2,62 @@ app:
     resource: @AppBundle/Controller/
     type:     annotation
 
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 gettoken:
   path: /api/open/getToken
 
-_liip_imagine:
-    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+user:
+  type: rest
+  resource: ZE\BABundle\Controller\UserController
+  prefix:   /api/open
+post_registration:
+  pattern:  /api/open/register
+  defaults: { _controller: ZEBABundle:User:register, _format: json }
+  methods: post
+get_checkUserNameOrEmailAvailableAction:
+  pattern:  /api/open/checkUserNameOrEmailAvailable
+  defaults: { _controller: ZEBABundle:User:checkUserNameOrEmailAvailable, _format: json }
+  methods: get
 
 homeitems:
   type: rest
   resource: ZE\BABundle\Controller\HomeItemsController
   prefix:   /api/open
+get_homeitems:
+  pattern:  /api/open/homeitems
+  defaults: { _controller: ZEBABundle:HomeItems:getHomeitems, _format: json }
+  methods: get
 
 genres:
   type: rest
   resource: ZE\BABundle\Controller\GenresController
   prefix:   /api/open
+
 bands:
   type: rest
   resource: ZE\BABundle\Controller\BandsController
   prefix:   /api/open
 put_band:
-    pattern:  /api/secure/band/{id}
-    defaults: { _controller: ZEBABundle:Bands:putBand, _format: json }
+  pattern:  /api/secure/band/{id}
+  defaults: { _controller: ZEBABundle:Bands:putBand, _format: json }
+  methods: put
+
 userbands:
   type: rest
   resource: ZE\BABundle\Controller\UserBandsController
   prefix:   /api/secure
+
 useritems:
   type: rest
   resource: ZE\BABundle\Controller\UserItemsController
   prefix:   /api/secure
+
+admin:
+  type: rest
+  resource: ZE\BABundle\Controller\AdminController
+  prefix:   /api/secure/admin

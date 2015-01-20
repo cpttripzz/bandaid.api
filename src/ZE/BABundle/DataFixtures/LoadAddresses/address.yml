@@ -1,0 +1,1614 @@
+---
+address:
+  -
+    id: 1
+    city_id: 28
+    region_id: 
+    address: Ha'Hof Road (Kvish Ha'Hof No.2 Rd)
+    latitude: 32.361344057848
+    longitude: 34.867915791698
+    createdAt: 2014-09-20 11:49:12
+    updatedAt: 2014-09-20 11:49:12
+  -
+    id: 2
+    city_id: 41
+    region_id: 1
+    address: dgdfg
+    latitude: 41.383352
+    longitude: 2.175116
+    createdAt: 2014-09-20 11:49:14
+    updatedAt: 2014-09-20 11:49:14
+  -
+    id: 3
+    city_id: 22
+    region_id: 2
+    address: Castle St
+    latitude: 51.482685786641
+    longitude: -3.1819152832031
+    createdAt: 2014-09-20 11:49:15
+    updatedAt: 2014-09-20 11:49:15
+  -
+    id: 4
+    city_id: 49
+    region_id: 3
+    address: wqerqwer
+    latitude: 35.689334888033
+    longitude: 139.68974590302
+    createdAt: 2014-09-20 11:49:17
+    updatedAt: 2014-09-20 11:49:17
+  -
+    id: 5
+    city_id: 1
+    region_id: 
+    address: 76 Arlozorov St.
+    latitude: 32.085847032624
+    longitude: 34.779238700867
+    createdAt: 2014-09-20 11:49:18
+    updatedAt: 2014-09-20 11:49:18
+  -
+    id: 6
+    city_id: 12
+    region_id: 4
+    address: 300 Portage Ave.
+    latitude: 49.893224436209
+    longitude: -97.143688201904
+    createdAt: 2014-09-20 11:49:20
+    updatedAt: 2014-09-20 11:49:20
+  -
+    id: 7
+    city_id: 14
+    region_id: 5
+    address: 100 City Centre Dr.
+    latitude: 43.593183276545
+    longitude: -79.642932494448
+    createdAt: 2014-09-20 11:49:22
+    updatedAt: 2014-09-20 11:49:22
+  -
+    id: 8
+    city_id: 52
+    region_id: 6
+    address: Costera Miguel Alemn No. 1926, Interior Galeras Diana, Fraccionamiento Magallanes
+    latitude: 16.860305220534
+    longitude: -99.873824939132
+    createdAt: 2014-09-20 11:49:24
+    updatedAt: 2014-09-20 11:49:24
+  -
+    id: 9
+    city_id: 45
+    region_id: 7
+    address: 4 Jingshan Front St
+    latitude: 39.913949670166
+    longitude: 116.39098405838
+    createdAt: 2014-09-20 11:49:25
+    updatedAt: 2014-09-20 11:49:25
+  -
+    id: 10
+    city_id: 29
+    region_id: 
+    address: qwerqwer
+    latitude: 29.549953847683
+    longitude: 34.955865263592
+    createdAt: 2014-09-20 11:49:26
+    updatedAt: 2014-09-20 11:49:26
+  -
+    id: 11
+    city_id: 29
+    region_id: 
+    address: Herods Promenade
+    latitude: 29.5479612285
+    longitude: 34.966306686401
+    createdAt: 2014-09-20 11:49:28
+    updatedAt: 2014-09-20 11:49:28
+  -
+    id: 12
+    city_id: 27
+    region_id: 
+    address: 70 Ibn Gvirol St.
+    latitude: 32.080592838332
+    longitude: 34.781491756439
+    createdAt: 2014-09-20 11:49:33
+    updatedAt: 2014-09-20 11:49:33
+  -
+    id: 13
+    city_id: 52
+    region_id: 6
+    address: Costera Miguel Alemn 22
+    latitude: 16.845937659338
+    longitude: -99.848899841309
+    createdAt: 2014-09-20 11:49:33
+    updatedAt: 2014-09-20 11:49:33
+  -
+    id: 14
+    city_id: 27
+    region_id: 
+    address: 171 Dizengoff St.
+    latitude: 32.084525656817
+    longitude: 34.774319331235
+    createdAt: 2014-09-20 11:49:35
+    updatedAt: 2014-09-20 11:49:35
+  -
+    id: 15
+    city_id: 39
+    region_id: 8
+    address: 318 Pearl St
+    latitude: 42.888604
+    longitude: -78.874682
+    createdAt: 2014-09-20 11:49:42
+    updatedAt: 2014-09-20 11:49:42
+  -
+    id: 16
+    city_id: 32
+    region_id: 
+    address: Rishon LeZion
+    latitude: 31.962991357042
+    longitude: 34.803665508646
+    createdAt: 2014-09-20 11:49:43
+    updatedAt: 2014-09-20 11:49:43
+  -
+    id: 17
+    city_id: 2
+    region_id: 5
+    address: 100 Queen St. W.
+    latitude: 43.652270473223
+    longitude: -79.383516311646
+    createdAt: 2014-09-20 11:49:50
+    updatedAt: 2014-09-20 11:49:50
+  -
+    id: 18
+    city_id: 20
+    region_id: 9
+    address: 147 Buchanan St
+    latitude: 55.861260341467
+    longitude: -4.2537689208984
+    createdAt: 2014-09-20 11:49:51
+    updatedAt: 2014-09-20 11:49:51
+  -
+    id: 19
+    city_id: 42
+    region_id: 10
+    address: Pza de la Puerta del Sol
+    latitude: 40.416877840264
+    longitude: -3.7035405635834
+    createdAt: 2014-09-20 11:49:53
+    updatedAt: 2014-09-20 11:49:53
+  -
+    id: 20
+    city_id: 14
+    region_id: 5
+    address: 100 City Centre Dr.
+    latitude: 43.591721442407
+    longitude: -79.643298983574
+    createdAt: 2014-09-20 11:50:05
+    updatedAt: 2014-09-20 11:50:05
+  -
+    id: 21
+    city_id: 29
+    region_id: 
+    address: Almog beach
+    latitude: 29.514905669532
+    longitude: 34.926129905577
+    createdAt: 2014-09-20 11:50:10
+    updatedAt: 2014-09-20 11:50:10
+  -
+    id: 22
+    city_id: 20
+    region_id: 9
+    address: 7 Renfrew St.
+    latitude: 55.864993187911
+    longitude: -4.2545413970947
+    createdAt: 2014-09-20 11:50:12
+    updatedAt: 2014-09-20 11:50:12
+  -
+    id: 23
+    city_id: 20
+    region_id: 9
+    address: 7 Renfrew St.
+    latitude: 55.864993187911
+    longitude: -4.2545413970947
+    createdAt: 2014-09-20 11:50:14
+    updatedAt: 2014-09-20 11:50:14
+  -
+    id: 24
+    city_id: 49
+    region_id: 3
+    address: qwerqwerqwer
+    latitude: 35.689892574163
+    longitude: 139.69162344933
+    createdAt: 2014-09-20 11:50:17
+    updatedAt: 2014-09-20 11:50:17
+  -
+    id: 25
+    city_id: 15
+    region_id: 5
+    address: 1465 Innisfil Beach Rd
+    latitude: 44.30866473361
+    longitude: -79.574388764628
+    createdAt: 2014-09-20 11:50:18
+    updatedAt: 2014-09-20 11:50:18
+  -
+    id: 26
+    city_id: 6
+    region_id: 
+    address: 47 Chandos Pl
+    latitude: 51.509510373598
+    longitude: -0.12576878070831
+    createdAt: 2014-09-20 11:50:20
+    updatedAt: 2014-09-20 11:50:20
+  -
+    id: 27
+    city_id: 38
+    region_id: 11
+    address: 1408 Market St
+    latitude: 37.7762478225
+    longitude: -122.41799319718
+    createdAt: 2014-09-20 11:50:22
+    updatedAt: 2014-09-20 11:50:22
+  -
+    id: 28
+    city_id: 19
+    region_id: 
+    address: St. Martin's Pl
+    latitude: 51.50927666177
+    longitude: -0.12759268283844
+    createdAt: 2014-09-20 11:50:24
+    updatedAt: 2014-09-20 11:50:24
+  -
+    id: 29
+    city_id: 40
+    region_id: 12
+    address: 820 2nd Ave
+    latitude: 47.604580144111
+    longitude: -122.33428485174
+    createdAt: 2014-09-20 11:50:26
+    updatedAt: 2014-09-20 11:50:26
+  -
+    id: 30
+    city_id: 18
+    region_id: 13
+    address: 532 W Broadway
+    latitude: 49.263323818336
+    longitude: -123.11590433121
+    createdAt: 2014-09-20 11:50:28
+    updatedAt: 2014-09-20 11:50:28
+  -
+    id: 31
+    city_id: 7
+    region_id: 8
+    address: 72 Hudson Ave
+    latitude: 40.70274
+    longitude: -73.981284499168
+    createdAt: 2014-09-20 11:50:31
+    updatedAt: 2014-09-20 11:50:31
+  -
+    id: 32
+    city_id: 12
+    region_id: 4
+    address: 555 Main St.
+    latitude: 49.899555108147
+    longitude: -97.137250900269
+    createdAt: 2014-09-20 11:50:34
+    updatedAt: 2014-09-20 11:50:34
+  -
+    id: 33
+    city_id: 39
+    region_id: 8
+    address: 75 Edward St
+    latitude: 42.895815675602
+    longitude: -78.874575214214
+    createdAt: 2014-09-20 11:50:35
+    updatedAt: 2014-09-20 11:50:35
+  -
+    id: 34
+    city_id: 22
+    region_id: 2
+    address: 25 Westgate St.
+    latitude: 51.479891207767
+    longitude: -3.1811937689781
+    createdAt: 2014-09-20 11:50:38
+    updatedAt: 2014-09-20 11:50:38
+  -
+    id: 35
+    city_id: 41
+    region_id: 1
+    address: Pl. Catalunya
+    latitude: 41.387024088821
+    longitude: 2.1699607372284
+    createdAt: 2014-09-20 11:50:41
+    updatedAt: 2014-09-20 11:50:41
+  -
+    id: 36
+    city_id: 36
+    region_id: 14
+    address: 100 W Reno Ave
+    latitude: 35.463483791555
+    longitude: -97.515099048615
+    createdAt: 2014-09-20 11:50:43
+    updatedAt: 2014-09-20 11:50:43
+  -
+    id: 37
+    city_id: 37
+    region_id: 15
+    address: 165 Mulberry St
+    latitude: 40.73308000063
+    longitude: -74.170825481415
+    createdAt: 2014-09-20 11:50:47
+    updatedAt: 2014-09-20 11:50:47
+  -
+    id: 38
+    city_id: 16
+    region_id: 16
+    address: 361, rue Saint-Paul Est
+    latitude: 45.509458
+    longitude: -73.551625
+    createdAt: 2014-09-20 11:50:48
+    updatedAt: 2014-09-20 11:50:48
+  -
+    id: 39
+    city_id: 52
+    region_id: 6
+    address: Teniente Mateo F. Maury 1-A
+    latitude: 16.847796236836
+    longitude: -99.849243164062
+    createdAt: 2014-09-20 11:50:50
+    updatedAt: 2014-09-20 11:50:50
+  -
+    id: 40
+    city_id: 46
+    region_id: 17
+    address: 39 et 52 rue Sainte-Croix-de-la-Bretonnerie
+    latitude: 48.858806993594
+    longitude: 2.3540675640106
+    createdAt: 2014-09-20 11:50:52
+    updatedAt: 2014-09-20 11:50:52
+  -
+    id: 41
+    city_id: 29
+    region_id: 
+    address: weqrqwer
+    latitude: 29.560478446555
+    longitude: 34.951079668828
+    createdAt: 2014-09-20 11:50:55
+    updatedAt: 2014-09-20 11:50:55
+  -
+    id: 42
+    city_id: 23
+    region_id: 
+    address: 120 Igal Alon St.
+    latitude: 32.073647384487
+    longitude: 34.795707464218
+    createdAt: 2014-09-20 11:50:57
+    updatedAt: 2014-09-20 11:50:57
+  -
+    id: 43
+    city_id: 23
+    region_id: 
+    address: 120 Igal Alon St.
+    latitude: 32.073647384487
+    longitude: 34.795707464218
+    createdAt: 2014-09-20 11:51:00
+    updatedAt: 2014-09-20 11:51:00
+  -
+    id: 44
+    city_id: 19
+    region_id: 
+    address: Trafalgar Sq
+    latitude: 51.50872242607
+    longitude: -0.12832760810852
+    createdAt: 2014-09-20 11:51:05
+    updatedAt: 2014-09-20 11:51:05
+  -
+    id: 45
+    city_id: 25
+    region_id: 
+    address: 8 Derech HaMaccabim St.
+    latitude: 31.974571859574
+    longitude: 34.807562828064
+    createdAt: 2014-09-20 11:51:08
+    updatedAt: 2014-09-20 11:51:08
+  -
+    id: 46
+    city_id: 44
+    region_id: 18
+    address: 201 Renmin Ave
+    latitude: 31.230261433114
+    longitude: 121.47092700005
+    createdAt: 2014-09-20 11:51:10
+    updatedAt: 2014-09-20 11:51:10
+  -
+    id: 47
+    city_id: 41
+    region_id: 1
+    address: C. Palau de la Msica, 4-6
+    latitude: 41.387791
+    longitude: 2.175207
+    createdAt: 2014-09-20 11:51:13
+    updatedAt: 2014-09-20 11:51:13
+  -
+    id: 48
+    city_id: 38
+    region_id: 11
+    address: 1658 Market St
+    latitude: 37.773648528341
+    longitude: -122.42156041355
+    createdAt: 2014-09-20 11:51:15
+    updatedAt: 2014-09-20 11:51:15
+  -
+    id: 49
+    city_id: 12
+    region_id: 4
+    address: 468 Main St.
+    latitude: 49.897668433631
+    longitude: -97.139216959476
+    createdAt: 2014-09-20 11:51:18
+    updatedAt: 2014-09-20 11:51:18
+  -
+    id: 50
+    city_id: 21
+    region_id: 19
+    address: 10 Mathew St
+    latitude: 53.406323083126
+    longitude: -2.9877726179485
+    createdAt: 2014-09-20 11:51:19
+    updatedAt: 2014-09-20 11:51:19
+  -
+    id: 51
+    city_id: 43
+    region_id: 
+    address: qwerqwerqwer
+    latitude: 22.395146
+    longitude: 114.108614
+    createdAt: 2014-09-20 11:51:22
+    updatedAt: 2014-09-20 11:51:22
+  -
+    id: 52
+    city_id: 46
+    region_id: 17
+    address: 39 rue du Roi de Sicile
+    latitude: 48.856696403164
+    longitude: 2.3562240600586
+    createdAt: 2014-09-20 11:51:25
+    updatedAt: 2014-09-20 11:51:25
+  -
+    id: 53
+    city_id: 34
+    region_id: 20
+    address: 1300 Biscayne Blvd
+    latitude: 25.787188415026
+    longitude: -80.189981460571
+    createdAt: 2014-09-20 11:51:26
+    updatedAt: 2014-09-20 11:51:26
+  -
+    id: 54
+    city_id: 17
+    region_id: 16
+    address: Parc des Champs de bataille
+    latitude: 46.79762105553
+    longitude: -71.228184700012
+    createdAt: 2014-09-20 11:51:32
+    updatedAt: 2014-09-20 11:51:32
+  -
+    id: 55
+    city_id: 25
+    region_id: 
+    address: Ahad Ha'am 3
+    latitude: 32.050279878045
+    longitude: 34.823656082153
+    createdAt: 2014-09-20 11:51:33
+    updatedAt: 2014-09-20 11:51:33
+  -
+    id: 56
+    city_id: 36
+    region_id: 14
+    address: 620 N Harvey Ave
+    latitude: 35.47299069683
+    longitude: -97.517073154449
+    createdAt: 2014-09-20 11:51:39
+    updatedAt: 2014-09-20 11:51:39
+  -
+    id: 57
+    city_id: 6
+    region_id: 
+    address: 47 Villiers St
+    latitude: 51.507914726531
+    longitude: -0.12290492551916
+    createdAt: 2014-09-20 11:51:41
+    updatedAt: 2014-09-20 11:51:41
+  -
+    id: 58
+    city_id: 20
+    region_id: 9
+    address: 93 West Nile Street
+    latitude: 55.863125370238
+    longitude: -4.2544906006902
+    createdAt: 2014-09-20 11:51:43
+    updatedAt: 2014-09-20 11:51:43
+  -
+    id: 59
+    city_id: 30
+    region_id: 
+    address: 45 Yefe Nof St.
+    latitude: 32.812531201234
+    longitude: 34.987231387999
+    createdAt: 2014-09-20 11:51:45
+    updatedAt: 2014-09-20 11:51:45
+  -
+    id: 60
+    city_id: 5
+    region_id: 
+    address: 45 Yefe Nof St.
+    latitude: 32.812531201234
+    longitude: 34.987231387999
+    createdAt: 2014-09-20 11:51:47
+    updatedAt: 2014-09-20 11:51:47
+  -
+    id: 61
+    city_id: 16
+    region_id: 16
+    address: Vieux-Port de Montral
+    latitude: 45.505252862441
+    longitude: -73.55214715004
+    createdAt: 2014-09-20 11:51:49
+    updatedAt: 2014-09-20 11:51:49
+  -
+    id: 62
+    city_id: 34
+    region_id: 20
+    address: NW 2nd Ave
+    latitude: 25.798905921094
+    longitude: -80.198907852173
+    createdAt: 2014-09-20 11:51:52
+    updatedAt: 2014-09-20 11:51:52
+  -
+    id: 63
+    city_id: 44
+    region_id: 18
+    address: qwerqwerqwer
+    latitude: 31.225343973525
+    longitude: 121.46995067596
+    createdAt: 2014-09-20 11:51:54
+    updatedAt: 2014-09-20 11:51:54
+  -
+    id: 64
+    city_id: 39
+    region_id: 8
+    address: 646 Main St
+    latitude: 42.891718331961
+    longitude: -78.872759342194
+    createdAt: 2014-09-20 11:51:57
+    updatedAt: 2014-09-20 11:51:57
+  -
+    id: 65
+    city_id: 23
+    region_id: 
+    address: Kremnitsky 6
+    latitude: 32.06675328208
+    longitude: 34.794209623176
+    createdAt: 2014-09-20 11:52:00
+    updatedAt: 2014-09-20 11:52:00
+  -
+    id: 66
+    city_id: 8
+    region_id: 21
+    address: Woodward Ave
+    latitude: 42.331575009353
+    longitude: -83.046598434448
+    createdAt: 2014-09-20 11:52:03
+    updatedAt: 2014-09-20 11:52:03
+  -
+    id: 67
+    city_id: 41
+    region_id: 1
+    address: Verdaguer i Callis 4
+    latitude: 41.387027
+    longitude: 2.176203
+    createdAt: 2014-09-20 11:52:05
+    updatedAt: 2014-09-20 11:52:05
+  -
+    id: 68
+    city_id: 9
+    region_id: 11
+    address: 200 N Grand Ave
+    latitude: 34.055610548033
+    longitude: -118.24572086334
+    createdAt: 2014-09-20 11:52:09
+    updatedAt: 2014-09-20 11:52:09
+  -
+    id: 69
+    city_id: 43
+    region_id: 
+    address: Unit UG06, Citywalk, 1 Yeung Uk Rd
+    latitude: 22.369592707473
+    longitude: 114.11369204521
+    createdAt: 2014-09-20 11:52:11
+    updatedAt: 2014-09-20 11:52:11
+  -
+    id: 70
+    city_id: 8
+    region_id: 21
+    address: 118 W Lafayette Blvd
+    latitude: 42.331432243985
+    longitude: -83.048942685127
+    createdAt: 2014-09-20 11:52:13
+    updatedAt: 2014-09-20 11:52:13
+  -
+    id: 71
+    city_id: 16
+    region_id: 16
+    address: 410, rue St-Vincent
+    latitude: 45.506986020348
+    longitude: -73.553273677826
+    createdAt: 2014-09-20 11:52:16
+    updatedAt: 2014-09-20 11:52:16
+  -
+    id: 72
+    city_id: 36
+    region_id: 14
+    address: 301 W Reno Ave
+    latitude: 35.465244446349
+    longitude: -97.517942408176
+    createdAt: 2014-09-20 11:52:17
+    updatedAt: 2014-09-20 11:52:17
+  -
+    id: 73
+    city_id: 14
+    region_id: 5
+    address: 155 Square One Dr.
+    latitude: 43.595572386166
+    longitude: -79.644516990837
+    createdAt: 2014-09-20 11:52:20
+    updatedAt: 2014-09-20 11:52:20
+  -
+    id: 74
+    city_id: 38
+    region_id: 11
+    address: 45 Rose St.
+    latitude: 37.773536
+    longitude: -122.42211
+    createdAt: 2014-09-20 11:52:22
+    updatedAt: 2014-09-20 11:52:22
+  -
+    id: 75
+    city_id: 48
+    region_id: 22
+    address: Tahrir Square
+    latitude: 30.04435571693
+    longitude: 31.235686540604
+    createdAt: 2014-09-20 11:52:27
+    updatedAt: 2014-09-20 11:52:27
+  -
+    id: 76
+    city_id: 39
+    region_id: 8
+    address: 475 Ellicott St
+    latitude: 42.891293869536
+    longitude: -78.870141506195
+    createdAt: 2014-09-20 11:52:28
+    updatedAt: 2014-09-20 11:52:28
+  -
+    id: 77
+    city_id: 15
+    region_id: 5
+    address: 940 Innisfil Beach Rd
+    latitude: 44.315510113785
+    longitude: -79.5471257999
+    createdAt: 2014-09-20 11:52:31
+    updatedAt: 2014-09-20 11:52:31
+  -
+    id: 78
+    city_id: 29
+    region_id: 
+    address: qwerqwer
+    latitude: 29.504220094591
+    longitude: 34.917842202987
+    createdAt: 2014-09-20 11:52:32
+    updatedAt: 2014-09-20 11:52:32
+  -
+    id: 79
+    city_id: 17
+    region_id: 16
+    address: 235 rue Saint-Joseph Est
+    latitude: 46.813165742245
+    longitude: -71.227777004242
+    createdAt: 2014-09-20 11:52:35
+    updatedAt: 2014-09-20 11:52:35
+  -
+    id: 80
+    city_id: 7
+    region_id: 8
+    address: 25 Jay St
+    latitude: 40.704119884493
+    longitude: -73.986661605186
+    createdAt: 2014-09-20 11:52:38
+    updatedAt: 2014-09-20 11:52:38
+  -
+    id: 81
+    city_id: 2
+    region_id: 5
+    address: 189 Yonge St.
+    latitude: 43.653356897535
+    longitude: -79.378780382526
+    createdAt: 2014-09-20 11:52:41
+    updatedAt: 2014-09-20 11:52:41
+  -
+    id: 82
+    city_id: 2
+    region_id: 5
+    address: 189 Yonge St.
+    latitude: 43.653356897535
+    longitude: -79.378780382526
+    createdAt: 2014-09-20 11:52:44
+    updatedAt: 2014-09-20 11:52:44
+  -
+    id: 83
+    city_id: 32
+    region_id: 
+    address: Ben Gurion Rd.
+    latitude: 32.006310975398
+    longitude: 34.734284877777
+    createdAt: 2014-09-20 11:52:45
+    updatedAt: 2014-09-20 11:52:45
+  -
+    id: 84
+    city_id: 16
+    region_id: 16
+    address: 407 Place Jacques-Cartier
+    latitude: 45.507899572345
+    longitude: -73.552592396736
+    createdAt: 2014-09-20 11:52:48
+    updatedAt: 2014-09-20 11:52:48
+  -
+    id: 85
+    city_id: 21
+    region_id: 19
+    address: Liverpool Waterfront
+    latitude: 53.40472866212
+    longitude: -2.9968428611755
+    createdAt: 2014-09-20 11:52:51
+    updatedAt: 2014-09-20 11:52:51
+  -
+    id: 86
+    city_id: 14
+    region_id: 5
+    address: 309 Rathburn Rd. W.
+    latitude: 43.59229646333
+    longitude: -79.650707244873
+    createdAt: 2014-09-20 11:52:54
+    updatedAt: 2014-09-20 11:52:54
+  -
+    id: 87
+    city_id: 32
+    region_id: 
+    address: Ben Gurion Rd.
+    latitude: 32.022285570537
+    longitude: 34.739584922791
+    createdAt: 2014-09-20 11:52:56
+    updatedAt: 2014-09-20 11:52:56
+  -
+    id: 88
+    city_id: 38
+    region_id: 11
+    address: 199 Gough St
+    latitude: 37.775141585411
+    longitude: -122.42252111435
+    createdAt: 2014-09-20 11:52:58
+    updatedAt: 2014-09-20 11:52:58
+  -
+    id: 89
+    city_id: 10
+    region_id: 5
+    address: 17600 Yonge St
+    latitude: 44.056320110552
+    longitude: -79.485976696014
+    createdAt: 2014-09-20 11:53:02
+    updatedAt: 2014-09-20 11:53:02
+  -
+    id: 90
+    city_id: 33
+    region_id: 
+    address: 1 Etsel St.
+    latitude: 32.172933514483
+    longitude: 34.801608324051
+    createdAt: 2014-09-20 11:53:05
+    updatedAt: 2014-09-20 11:53:05
+  -
+    id: 91
+    city_id: 4
+    region_id: 
+    address: 11 Rupin St.
+    latitude: 31.773865200012
+    longitude: 35.20414352417
+    createdAt: 2014-09-20 11:53:07
+    updatedAt: 2014-09-20 11:53:07
+  -
+    id: 92
+    city_id: 26
+    region_id: 
+    address: 19 Habarzel St.
+    latitude: 32.108296673595
+    longitude: 34.838140010834
+    createdAt: 2014-09-20 11:53:10
+    updatedAt: 2014-09-20 11:53:10
+  -
+    id: 93
+    city_id: 14
+    region_id: 5
+    address: 1177 Central Parkway W
+    latitude: 43.566772679118
+    longitude: -79.664182662964
+    createdAt: 2014-09-20 11:53:11
+    updatedAt: 2014-09-20 11:53:11
+  -
+    id: 94
+    city_id: 18
+    region_id: 13
+    address: 2549 Cambie St.
+    latitude: 49.262969
+    longitude: -123.114831
+    createdAt: 2014-09-20 11:53:15
+    updatedAt: 2014-09-20 11:53:15
+  -
+    id: 95
+    city_id: 45
+    region_id: 7
+    address: 23 Qianmen Dong Dajie
+    latitude: 39.900266482027
+    longitude: 116.39565153848
+    createdAt: 2014-09-20 11:53:17
+    updatedAt: 2014-09-20 11:53:17
+  -
+    id: 96
+    city_id: 22
+    region_id: 2
+    address: 10-12 Quay St
+    latitude: 51.480019832312
+    longitude: -3.1808960437775
+    createdAt: 2014-09-20 11:53:20
+    updatedAt: 2014-09-20 11:53:20
+  -
+    id: 97
+    city_id: 32
+    region_id: 
+    address: 4 HaMe'a Ve'Esrim St.
+    latitude: 31.979613725669
+    longitude: 34.747223854065
+    createdAt: 2014-09-20 11:53:21
+    updatedAt: 2014-09-20 11:53:21
+  -
+    id: 98
+    city_id: 39
+    region_id: 8
+    address: One James D. Griffin Plaza
+    latitude: 42.880929005565
+    longitude: -78.874036073685
+    createdAt: 2014-09-20 11:53:24
+    updatedAt: 2014-09-20 11:53:24
+  -
+    id: 99
+    city_id: 7
+    region_id: 8
+    address: 37 Main St
+    latitude: 40.703190525038
+    longitude: -73.9906501942
+    createdAt: 2014-09-20 11:53:31
+    updatedAt: 2014-09-20 11:53:31
+  -
+    id: 100
+    city_id: 46
+    region_id: 17
+    address: 52 rue de l'Htel de Ville
+    latitude: 48.854282173898
+    longitude: 2.3554944992065
+    createdAt: 2014-09-20 11:53:32
+    updatedAt: 2014-09-20 11:53:32
+  -
+    id: 101
+    city_id: 4
+    region_id: 
+    address: Mahane Yehuda
+    latitude: 31.784206218696
+    longitude: 35.212563503595
+    createdAt: 2014-09-20 11:53:34
+    updatedAt: 2014-09-20 11:53:34
+  -
+    id: 102
+    city_id: 33
+    region_id: 
+    address: 33 Maskit St.
+    latitude: 32.16300703895
+    longitude: 34.810309410095
+    createdAt: 2014-09-20 11:53:35
+    updatedAt: 2014-09-20 11:53:35
+  -
+    id: 103
+    city_id: 52
+    region_id: 6
+    address: Costera Miguel Alemn S/n, Fraccionamiento Club Deportivo.
+    latitude: 16.85467651919
+    longitude: -99.860279114731
+    createdAt: 2014-09-20 11:53:38
+    updatedAt: 2014-09-20 11:53:38
+  -
+    id: 104
+    city_id: 39
+    region_id: 8
+    address: 1 Seymour H Knox III Plz
+    latitude: 42.875004882644
+    longitude: -78.876643180847
+    createdAt: 2014-09-20 11:53:40
+    updatedAt: 2014-09-20 11:53:40
+  -
+    id: 105
+    city_id: 16
+    region_id: 16
+    address: 106 rue St-Paul ouest
+    latitude: 45.504212879076
+    longitude: -73.554352499988
+    createdAt: 2014-09-20 11:53:44
+    updatedAt: 2014-09-20 11:53:44
+  -
+    id: 106
+    city_id: 10
+    region_id: 5
+    address: 129 Pedersen Dr
+    latitude: 44.018299973105
+    longitude: -79.448361078624
+    createdAt: 2014-09-20 11:53:45
+    updatedAt: 2014-09-20 11:53:45
+  -
+    id: 107
+    city_id: 26
+    region_id: 
+    address: 27 Habarzel St., Ramat Hachayal, Tel Aviv
+    latitude: 32.109893567305
+    longitude: 34.839427168363
+    createdAt: 2014-09-20 11:53:48
+    updatedAt: 2014-09-20 11:53:48
+  -
+    id: 108
+    city_id: 5
+    region_id: 
+    address: Haifa
+    latitude: 32.80549577822
+    longitude: 34.956263602362
+    createdAt: 2014-09-20 11:53:49
+    updatedAt: 2014-09-20 11:53:49
+  -
+    id: 109
+    city_id: 42
+    region_id: 10
+    address: Pl. de la Puerta del Sol
+    latitude: 40.416623599237
+    longitude: -3.7038396298885
+    createdAt: 2014-09-20 11:53:51
+    updatedAt: 2014-09-20 11:53:51
+  -
+    id: 110
+    city_id: 24
+    region_id: 
+    address: Western Wall Plaza
+    latitude: 31.776373423751
+    longitude: 35.233798027039
+    createdAt: 2014-09-20 11:53:52
+    updatedAt: 2014-09-20 11:53:52
+  -
+    id: 111
+    city_id: 41
+    region_id: 1
+    address: C. de l'Arc de Sant Ramon del Call, 11
+    latitude: 41.382641029004
+    longitude: 2.1752688288689
+    createdAt: 2014-09-20 11:53:56
+    updatedAt: 2014-09-20 11:53:56
+  -
+    id: 112
+    city_id: 2
+    region_id: 5
+    address: 1 Dundas St E
+    latitude: 43.656074109119
+    longitude: -79.38042640686
+    createdAt: 2014-09-20 11:53:58
+    updatedAt: 2014-09-20 11:53:58
+  -
+    id: 113
+    city_id: 25
+    region_id: 
+    address: 1 HaTsvi ave
+    latitude: 32.045604766245
+    longitude: 34.825071465153
+    createdAt: 2014-09-20 11:54:01
+    updatedAt: 2014-09-20 11:54:01
+  -
+    id: 114
+    city_id: 7
+    region_id: 8
+    address: 81 Broadway
+    latitude: 40.710610489486
+    longitude: -73.965684281892
+    createdAt: 2014-09-20 11:54:04
+    updatedAt: 2014-09-20 11:54:04
+  -
+    id: 115
+    city_id: 42
+    region_id: 10
+    address: C. Tetun, 12
+    latitude: 40.41719844806
+    longitude: -3.7044444680214
+    createdAt: 2014-09-20 11:54:07
+    updatedAt: 2014-09-20 11:54:07
+  -
+    id: 116
+    city_id: 42
+    region_id: 10
+    address: C. Tetun, 12
+    latitude: 40.41719844806
+    longitude: -3.7044444680214
+    createdAt: 2014-09-20 11:54:08
+    updatedAt: 2014-09-20 11:54:08
+  -
+    id: 117
+    city_id: 27
+    region_id: 
+    address: 197 Dizengoff St.
+    latitude: 32.087134354659
+    longitude: 34.774977451538
+    createdAt: 2014-09-20 11:54:11
+    updatedAt: 2014-09-20 11:54:11
+  -
+    id: 118
+    city_id: 44
+    region_id: 18
+    address: Inside People's Park, 231 Nanjing Rd. W.
+    latitude: 31.233281354705
+    longitude: 121.4670951564
+    createdAt: 2014-09-20 11:54:12
+    updatedAt: 2014-09-20 11:54:12
+  -
+    id: 119
+    city_id: 9
+    region_id: 11
+    address: 135 S San Pedro St
+    latitude: 34.049685968482
+    longitude: -118.24171364307
+    createdAt: 2014-09-20 11:54:16
+    updatedAt: 2014-09-20 11:54:16
+  -
+    id: 120
+    city_id: 26
+    region_id: 
+    address: wqerqwerqwer
+    latitude: 32.164233659908
+    longitude: 34.872813840929
+    createdAt: 2014-09-20 11:54:18
+    updatedAt: 2014-09-20 11:54:18
+  -
+    id: 121
+    city_id: 20
+    region_id: 9
+    address: 24 Gordon St
+    latitude: 55.860290293344
+    longitude: -4.2558195388382
+    createdAt: 2014-09-20 11:54:21
+    updatedAt: 2014-09-20 11:54:21
+  -
+    id: 122
+    city_id: 24
+    region_id: 
+    address: Jaffa Gate, Old City
+    latitude: 31.776209251187
+    longitude: 35.228111743927
+    createdAt: 2014-09-20 11:54:24
+    updatedAt: 2014-09-20 11:54:24
+  -
+    id: 123
+    city_id: 1
+    region_id: 
+    address: 1 Shlomo HaMelech
+    latitude: 32.076471918655
+    longitude: 34.776876262156
+    createdAt: 2014-09-20 11:54:25
+    updatedAt: 2014-09-20 11:54:25
+  -
+    id: 124
+    city_id: 9
+    region_id: 11
+    address: 329 E 1st St
+    latitude: 34.049802895189
+    longitude: -118.24026756134
+    createdAt: 2014-09-20 11:54:27
+    updatedAt: 2014-09-20 11:54:27
+  -
+    id: 125
+    city_id: 15
+    region_id: 5
+    address: 201 The Queensway S
+    latitude: 44.230863
+    longitude: -79.465472
+    createdAt: 2014-09-20 11:54:31
+    updatedAt: 2014-09-20 11:54:31
+  -
+    id: 126
+    city_id: 23
+    region_id: 
+    address: Yigal Alon 96
+    latitude: 32.069688480259
+    longitude: 34.794249506217
+    createdAt: 2014-09-20 11:54:33
+    updatedAt: 2014-09-20 11:54:33
+  -
+    id: 127
+    city_id: 19
+    region_id: 
+    address: 31 St Martins Ln
+    latitude: 51.509590503092
+    longitude: -0.1268470287323
+    createdAt: 2014-09-20 11:54:37
+    updatedAt: 2014-09-20 11:54:37
+  -
+    id: 128
+    city_id: 23
+    region_id: 
+    address: 7 Sirkin st.
+    latitude: 32.076883813451
+    longitude: 34.814289808273
+    createdAt: 2014-09-20 11:54:40
+    updatedAt: 2014-09-20 11:54:40
+  -
+    id: 129
+    city_id: 21
+    region_id: 19
+    address: Hartley Quay
+    latitude: 53.401140305404
+    longitude: -2.9933023452759
+    createdAt: 2014-09-20 11:54:43
+    updatedAt: 2014-09-20 11:54:43
+  -
+    id: 130
+    city_id: 49
+    region_id: 3
+    address: qwerqwerqwer
+    latitude: 35.685355815049
+    longitude: 139.69110712409
+    createdAt: 2014-09-20 11:54:44
+    updatedAt: 2014-09-20 11:54:44
+  -
+    id: 131
+    city_id: 10
+    region_id: 5
+    address: 15830 Bayview Ave.
+    latitude: 44.020625863462
+    longitude: -79.448726177216
+    createdAt: 2014-09-20 11:54:47
+    updatedAt: 2014-09-20 11:54:47
+  -
+    id: 132
+    city_id: 41
+    region_id: 1
+    address: La Rambla, 91
+    latitude: 41.381936652994
+    longitude: 2.1721279621124
+    createdAt: 2014-09-20 11:54:49
+    updatedAt: 2014-09-20 11:54:49
+  -
+    id: 133
+    city_id: 22
+    region_id: 2
+    address: Castle St.
+    latitude: 51.483868378135
+    longitude: -3.1853485107422
+    createdAt: 2014-09-20 11:54:52
+    updatedAt: 2014-09-20 11:54:52
+  -
+    id: 134
+    city_id: 17
+    region_id: 16
+    address: 228 rue St-Joseph E
+    latitude: 46.81314
+    longitude: -71.22792
+    createdAt: 2014-09-20 11:54:54
+    updatedAt: 2014-09-20 11:54:54
+  -
+    id: 135
+    city_id: 8
+    region_id: 21
+    address: 612 Woodward Ave
+    latitude: 42.330551850386
+    longitude: -83.045761585236
+    createdAt: 2014-09-20 11:54:57
+    updatedAt: 2014-09-20 11:54:57
+  -
+    id: 136
+    city_id: 15
+    region_id: 5
+    address: 2080 Jans Blvd.
+    latitude: 44.311586923852
+    longitude: -79.559424780018
+    createdAt: 2014-09-20 11:55:00
+    updatedAt: 2014-09-20 11:55:00
+  -
+    id: 137
+    city_id: 39
+    region_id: 8
+    address: 370 Virginia St
+    latitude: 42.8967059
+    longitude: -78.878431
+    createdAt: 2014-09-20 11:55:02
+    updatedAt: 2014-09-20 11:55:02
+  -
+    id: 138
+    city_id: 48
+    region_id: 22
+    address: Downtown
+    latitude: 30.047569066775
+    longitude: 31.238551139832
+    createdAt: 2014-09-20 11:55:06
+    updatedAt: 2014-09-20 11:55:06
+  -
+    id: 139
+    city_id: 33
+    region_id: 
+    address: 80 Ramat Yam
+    latitude: 32.169364467125
+    longitude: 34.799065589905
+    createdAt: 2014-09-20 11:55:08
+    updatedAt: 2014-09-20 11:55:08
+  -
+    id: 140
+    city_id: 6
+    region_id: 
+    address: 66 Chandos Pl
+    latitude: 51.510226525949
+    longitude: -0.12449473142624
+    createdAt: 2014-09-20 11:55:10
+    updatedAt: 2014-09-20 11:55:10
+  -
+    id: 141
+    city_id: 34
+    region_id: 20
+    address: 2390 NW 2nd Ave
+    latitude: 25.799926
+    longitude: -80.199245
+    createdAt: 2014-09-20 11:55:11
+    updatedAt: 2014-09-20 11:55:11
+  -
+    id: 142
+    city_id: 38
+    region_id: 11
+    address: 1420 Market St
+    latitude: 37.776125592822
+    longitude: -122.41810934101
+    createdAt: 2014-09-20 11:55:14
+    updatedAt: 2014-09-20 11:55:14
+  -
+    id: 143
+    city_id: 26
+    region_id: 
+    address: 7 HaBarzel St
+    latitude: 32.106983309219
+    longitude: 34.836182117162
+    createdAt: 2014-09-20 11:55:17
+    updatedAt: 2014-09-20 11:55:17
+  -
+    id: 144
+    city_id: 40
+    region_id: 12
+    address: 1225 4th Ave
+    latitude: 47.608198717348
+    longitude: -122.33486672686
+    createdAt: 2014-09-20 11:55:18
+    updatedAt: 2014-09-20 11:55:18
+  -
+    id: 145
+    city_id: 47
+    region_id: 23
+    address: 1 avenue Docteur Mnard
+    latitude: 43.709160117516
+    longitude: 7.2695642709732
+    createdAt: 2014-09-20 11:55:20
+    updatedAt: 2014-09-20 11:55:20
+  -
+    id: 146
+    city_id: 11
+    region_id: 5
+    address: 53 Elgin St
+    latitude: 45.423616571174
+    longitude: -75.693438787496
+    createdAt: 2014-09-20 11:55:21
+    updatedAt: 2014-09-20 11:55:21
+  -
+    id: 147
+    city_id: 47
+    region_id: 24
+    address: 1 avenue Docteur Mnard
+    latitude: 43.709160117516
+    longitude: 7.2695642709732
+    createdAt: 2014-09-20 11:55:22
+    updatedAt: 2014-09-20 11:55:22
+  -
+    id: 148
+    city_id: 4
+    region_id: 
+    address: Ir David Foundation
+    latitude: 31.774162061075
+    longitude: 35.23569526302
+    createdAt: 2014-09-20 11:55:25
+    updatedAt: 2014-09-20 11:55:25
+  -
+    id: 149
+    city_id: 20
+    region_id: 9
+    address: 153 Bath St
+    latitude: 55.864330934878
+    longitude: -4.2610430717468
+    createdAt: 2014-09-20 11:55:29
+    updatedAt: 2014-09-20 11:55:29
+  -
+    id: 150
+    city_id: 25
+    region_id: 
+    address: qwerqwerqwer
+    latitude: 31.898322165299
+    longitude: 34.810303545589
+    createdAt: 2014-09-20 11:55:31
+    updatedAt: 2014-09-20 11:55:31
+  -
+    id: 151
+    city_id: 50
+    region_id: 25
+    address: wqerqwerqwer
+    latitude: 34.692200507565
+    longitude: 135.50499558449
+    createdAt: 2014-09-20 11:55:32
+    updatedAt: 2014-09-20 11:55:32
+  -
+    id: 152
+    city_id: 10
+    region_id: 5
+    address: 17600 Yonge Street
+    latitude: 44.055857487799
+    longitude: -79.485354423523
+    createdAt: 2014-09-20 11:55:34
+    updatedAt: 2014-09-20 11:55:34
+  -
+    id: 153
+    city_id: 2
+    region_id: 5
+    address: 401 Bay St.
+    latitude: 43.651804705333
+    longitude: -79.381499290466
+    createdAt: 2014-09-20 11:55:36
+    updatedAt: 2014-09-20 11:55:36
+  -
+    id: 154
+    city_id: 34
+    region_id: 20
+    address: 1035 N Miami Ave
+    latitude: 25.784647698302
+    longitude: -80.193843841553
+    createdAt: 2014-09-20 11:55:38
+    updatedAt: 2014-09-20 11:55:38
+  -
+    id: 155
+    city_id: 5
+    region_id: 
+    address: Bat Galim
+    latitude: 32.83632757016
+    longitude: 34.981327056885
+    createdAt: 2014-09-20 11:55:41
+    updatedAt: 2014-09-20 11:55:41
+  -
+    id: 156
+    city_id: 51
+    region_id: 26
+    address: Plaza de la Constitucin s/n
+    latitude: 19.432600481483
+    longitude: -99.133222103119
+    createdAt: 2014-09-20 11:55:43
+    updatedAt: 2014-09-20 11:55:43
+  -
+    id: 157
+    city_id: 23
+    region_id: 
+    address: 132 Menachem Begin Rd.
+    latitude: 32.074159719445
+    longitude: 34.791963982602
+    createdAt: 2014-09-20 11:55:46
+    updatedAt: 2014-09-20 11:55:46
+  -
+    id: 158
+    city_id: 12
+    region_id: 4
+    address: 1 Forks Market Rd.
+    latitude: 49.88703118498
+    longitude: -97.130513191223
+    createdAt: 2014-09-20 11:55:48
+    updatedAt: 2014-09-20 11:55:48
+  -
+    id: 159
+    city_id: 25
+    region_id: 
+    address: Kehilat Detroit
+    latitude: 31.925785698548
+    longitude: 34.872943158545
+    createdAt: 2014-09-20 11:55:52
+    updatedAt: 2014-09-20 11:55:52
+  -
+    id: 160
+    city_id: 5
+    region_id: 
+    address: 25 Shmaryahu Levine St.
+    latitude: 32.809496024645
+    longitude: 34.996218681335
+    createdAt: 2014-09-20 11:55:53
+    updatedAt: 2014-09-20 11:55:53
+  -
+    id: 161
+    city_id: 51
+    region_id: 26
+    address: Primer Cuadro de la Ciudad
+    latitude: 19.432610599135
+    longitude: -99.133318662643
+    createdAt: 2014-09-20 11:55:56
+    updatedAt: 2014-09-20 11:55:56
+  -
+    id: 162
+    city_id: 47
+    region_id: 23
+    address: Place Massna
+    latitude: 43.696982885758
+    longitude: 7.2703313827515
+    createdAt: 2014-09-20 11:55:58
+    updatedAt: 2014-09-20 11:55:58
+  -
+    id: 163
+    city_id: 39
+    region_id: 8
+    address: 76 Pearl St
+    latitude: 42.880929487552
+    longitude: -78.877261709951
+    createdAt: 2014-09-20 11:56:04
+    updatedAt: 2014-09-20 11:56:04
+  -
+    id: 164
+    city_id: 31
+    region_id: 
+    address: qwerqwerqwer
+    latitude: 31.247343051478
+    longitude: 34.798919886512
+    createdAt: 2014-09-20 11:56:05
+    updatedAt: 2014-09-20 11:56:05
+  -
+    id: 165
+    city_id: 15
+    region_id: 5
+    address: 289 The Queensway South
+    latitude: 44.22445
+    longitude: -79.464503
+    createdAt: 2014-09-20 11:56:07
+    updatedAt: 2014-09-20 11:56:07
+  -
+    id: 166
+    city_id: 17
+    region_id: 16
+    address: 447 rue St-Jean
+    latitude: 46.809194
+    longitude: -71.221714
+    createdAt: 2014-09-20 11:56:08
+    updatedAt: 2014-09-20 11:56:08
+  -
+    id: 167
+    city_id: 10
+    region_id: 5
+    address: 196 Main St. S.
+    latitude: 44.05366606016
+    longitude: -79.457453969326
+    createdAt: 2014-09-20 11:56:10
+    updatedAt: 2014-09-20 11:56:10
+  -
+    id: 168
+    city_id: 31
+    region_id: 
+    address: Reger Blvd.
+    latitude: 31.247375481529
+    longitude: 34.798655633914
+    createdAt: 2014-09-20 11:56:12
+    updatedAt: 2014-09-20 11:56:12
+  -
+    id: 169
+    city_id: 49
+    region_id: 3
+    address: qwerqwerqwer
+    latitude: 35.691583036424
+    longitude: 139.69694495201
+    createdAt: 2014-09-20 11:56:14
+    updatedAt: 2014-09-20 11:56:14
+  -
+    id: 170
+    city_id: 50
+    region_id: 25
+    address: qwerqwerqwer
+    latitude: 34.693532
+    longitude: 135.504015
+    createdAt: 2014-09-20 11:56:15
+    updatedAt: 2014-09-20 11:56:15
+  -
+    id: 171
+    city_id: 27
+    region_id: 
+    address: 171 Dizengoff St.
+    latitude: 32.08445859821
+    longitude: 34.77415210314
+    createdAt: 2014-09-20 11:56:16
+    updatedAt: 2014-09-20 11:56:16
+  -
+    id: 172
+    city_id: 1
+    region_id: 
+    address: 171 Dizengoff St.
+    latitude: 32.08445859821
+    longitude: 34.77415210314
+    createdAt: 2014-09-20 11:56:17
+    updatedAt: 2014-09-20 11:56:17
+  -
+    id: 173
+    city_id: 19
+    region_id: 
+    address: 21-22 Maiden Ln
+    latitude: 51.510443481818
+    longitude: -0.12363915456877
+    createdAt: 2014-09-20 11:56:19
+    updatedAt: 2014-09-20 11:56:19
+  -
+    id: 174
+    city_id: 4
+    region_id: 
+    address: Old City
+    latitude: 31.781663272632
+    longitude: 35.230407714844
+    createdAt: 2014-09-20 11:56:20
+    updatedAt: 2014-09-20 11:56:20
+  -
+    id: 175
+    city_id: 29
+    region_id: 
+    address: Agmonim 68
+    latitude: 29.559979
+    longitude: 34.953145
+    createdAt: 2014-09-20 11:56:22
+    updatedAt: 2014-09-20 11:56:22
+  -
+    id: 176
+    city_id: 19
+    region_id: 
+    address: 24 New Row
+    latitude: 51.511184
+    longitude: -0.126491
+    createdAt: 2014-09-20 11:56:23
+    updatedAt: 2014-09-20 11:56:23
+  -
+    id: 177
+    city_id: 29
+    region_id: 
+    address: Agmonim 68
+    latitude: 29.559979
+    longitude: 34.953145
+    createdAt: 2014-09-20 11:56:24
+    updatedAt: 2014-09-20 11:56:24
+  -
+    id: 178
+    city_id: 44
+    region_id: 18
+    address: 231 W Nanjing Rd
+    latitude: 31.233701667814
+    longitude: 121.46763324738
+    createdAt: 2014-09-20 11:56:25
+    updatedAt: 2014-09-20 11:56:25
+  -
+    id: 179
+    city_id: 53
+    region_id: 
+    address: qwerqwerwerolu qwerqwer
+    latitude: 38.387627
+    longitude: 34.7022
+    createdAt: 2014-12-05 14:03:55
+    updatedAt: 2014-12-05 14:03:55
+

@@ -38,21 +38,4 @@ class UserBandsController  extends FOSRestController
 
     }
 
-    public function showAction(User $user)
-    {
-        if (!$user) {
-            throw $this->createNotFoundException('Unable to find User entity.');
-        }
-
-        $em = $this->getDoctrine()->getManager();
-
-        $bandsOwned = $em->getRepository('ZE\BABundle\Entity\Association')->getAllBandsOwnedByUserId($user->getId());
-        $musicianProfiles = $em->getRepository('ZE\BABundle\Entity\Association')->getAllMusiciansOwnedByUserId($user->getId());
-
-        return $this->render(
-            'ZEBABundle:User:index.html.twig',array('bands_owned' => $bandsOwned, 'musician_profiles' => $musicianProfiles)
-
-        );
-    }
-
 }

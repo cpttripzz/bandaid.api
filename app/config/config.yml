@@ -83,6 +83,9 @@ fos_user:
     db_driver: orm
     firewall_name: secure_area
     user_class: ZE\BABundle\Entity\User
+    registration:
+        confirmation:
+            enabled:    false # change to true for required email confirmation
 snc_redis:
 
     clients:
@@ -130,3 +133,25 @@ fos_rest:
     routing_loader:
         default_format: json
              # ensure distinct results, useful when ORM queries are using GROUP BY statements
+
+liip_imagine:
+    driver:               gd
+
+    resolvers:
+        default:
+          web_path:
+            web_root: %kernel.root_dir%/../web
+            # %kernel.root_dir%/../web/img is the folder where filtered images will be created!
+            cache_prefix: media/cache
+            # media/cache the prefix of folder where the cached images will be created
+    filter_sets:
+        cache: ~
+        thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [25, 20], mode: outbound }
+        assoc:
+            quality: 75
+            filters:
+                thumbnail: { size: [200, 120], mode: outbound }
+

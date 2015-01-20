@@ -65,7 +65,7 @@ class BandService extends ServiceAbstract
             'notUser' => 'bu.id != '
         );
 
-        $dql .= $this->setDqlParamsString($dqlParams,$params);
+        $dql .= $this->setDqlCustomParamsWhere($dqlParams,$params);
 
         $query = $this->em->createQuery($dql)
             ->setFirstResult(($page - 1) * $limit)

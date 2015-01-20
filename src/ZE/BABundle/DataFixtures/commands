@@ -1,0 +1,29 @@
+ php app/console doctrine:schema:drop --force
+ php app/console doctrine:schema:update --force
+ app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/LoadCountries
+ app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/LoadRegions
+ app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/LoadCities
+ app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/LoadAddresses
+
+ for i in `seq 1 10`;
+ do
+     echo "$i"
+      app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/CreateUsers
+ done
+
+app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/AssignBandsMusicians
+app/console doctrine:fixtures:load --append --fixtures=src/ZE/BABundle/DataFixtures/BandsVacancies
+
+app/console fos:user:create admin adming@admin.com 123456
+app/console fos:user:promote admin ROLE_ADMIN
+
+
+cd "/home/zach/dev/sf-api/web/img/users/"
+ for i in ls *.jpeg
+ do
+    ../../../app/console liip:imagine:cache:resolve img/users/"$i"
+ done
+cd -
+
+
+7db9f8115725724e249e3b01a7c8875f6f4ed016.jpeg

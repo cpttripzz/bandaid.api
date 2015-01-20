@@ -9,6 +9,8 @@
 namespace ZE\BABundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -16,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+    use TimestampableEntity;
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -28,4 +31,15 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+    public function setRoles(array $roles)
+    {
+        $this->roles = array();
+
+        foreach ($roles as $role) {
+            $this->addRole($role);
+        }
+
+        return $this;
+    }
+
 }
