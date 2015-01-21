@@ -32,7 +32,7 @@ class AdminController extends FOSRestController
     public function getUserreportsAction(Request $request)
     {
         $request = new AdminUsersRequest($request->query->all());
-        $data = $this->get('zeba.admin_service')->findUsers($request->options);
+        $data = $this->get('zeba.user_service')->findUsers($request->options);
 
         $view = $this->view($data, 200);
 
