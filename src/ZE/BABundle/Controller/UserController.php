@@ -4,7 +4,9 @@ namespace ZE\BABundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
+use ZE\BABundle\Request\UserRegistrationCheckAvailableRequest;
 use ZE\BABundle\Request\UserRegistrationRequest;
+use ZE\BABundle\Util\RestUtil;
 
 class UserController extends FOSRestController
 {
@@ -22,9 +24,11 @@ class UserController extends FOSRestController
     public function checkUserNameOrEmailAvailableAction(Request $request)
     {
         $parameters = $request->query->all();
-        $registrationRequest = new UserRegistrationRequest($parameters);
-        $data = $this->get('zeba.user_service')->userExists($registrationRequest->options);
-        $view = $this->view($data, 200);
+        $registrationRequest = new UserRegistrationCheckAvailableRequest($parameters);
+        $data = $this->get('zeba.user_service')->userExists(
+            array($registrationRequest->options['field'] => $registrationRequest->options['value'])
+        );
+        $view = $this->view(RestUtil::formatRestResponse(!$data), 200);
 
         return $this->handleView($view);
     }

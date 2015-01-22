@@ -2,6 +2,8 @@
 
 namespace ZE\BABundle\Service\Cached;
 
+use ZE\BABundle\Util\RestUtil;
+
 class UserService extends ServiceAbstract
 {
     protected $userService;
@@ -23,7 +25,7 @@ class UserService extends ServiceAbstract
     public function registerUser($params, $confirmationEnabled)
     {
         if($this->userExists($params)){
-            return array('Username or email already in use');
+            return RestUtil::formatRestResponse(false,'Username or email already in use');
         } else {
             $user = $this->userService->createUser();
             $user->setUsername($params['username']);
@@ -31,11 +33,20 @@ class UserService extends ServiceAbstract
             $user->setPlainPassword($params['password']);
 
             $user->setEnabled(!$confirmationEnabled);
-            $user->setRoles(array('ROLE_USER'));
+            $user->addRole('ROLE_USER');
             $this->userService->updateUser($user, true);
             $this->em->flush();
-            $user = array_intersect_key($user,array_flip($this->columnsToExpose));
-            return $user;
+
+            $newId = $user->getId();
+            $user = $this->findUsers(array('id' => $newId));
+
+            if(!empty($user['users'])) {
+                $user = array_intersect_key($user['users'][0], array_flip($this->columnsToExpose));
+                return $user;
+            } else {
+                return RestUtil::formatRestResponse(false,'Error registering user');
+            }
+
         }
     }
     /**
