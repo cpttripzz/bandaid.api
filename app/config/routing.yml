@@ -51,6 +51,11 @@ post_band:
   defaults: { _controller: ZEBABundle:Bands:postBand, _format: json }
   methods: post
 
+document:
+  type: rest
+  resource: ZE\BABundle\Controller\DocumentController
+  prefix:   /api/secure/
+
 userbands:
   type: rest
   resource: ZE\BABundle\Controller\UserBandsController

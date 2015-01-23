@@ -8,6 +8,7 @@ use Imagine\Gd;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="document")
@@ -30,10 +31,6 @@ class Document
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $path;
-    /**
-     * @ORM\Column(name="crop_params", type="string", length=255, nullable=true)
-     */
-    protected $cropParams;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -49,23 +46,22 @@ class Document
     {
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+            : $this->getUploadRootDir() . '/' . $this->path;
     }
 
     public function getWebPath()
     {
         return null === $this->path
             ? null
-            : self::UPLOAD_DIR.'/'.$this->path;
+            : self::UPLOAD_DIR . '/' . $this->path;
     }
 
     public static function getUploadRootDir()
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.self::UPLOAD_DIR;
+        return __DIR__ . '/../../../../web/' . self::UPLOAD_DIR;
     }
-
 
 
     /**
@@ -80,7 +76,7 @@ class Document
      *
      * @param Document $file
      */
-    public function setFile( $file = null)
+    public function setFile($file = null)
     {
         $this->file = $file;
         $this->name = $file->getClientOriginalName();
@@ -103,7 +99,7 @@ class Document
         if (null !== $this->getFile()) {
 //            $this->name = $this->getFile();
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->path = $filename.'.'.$this->getFile()->guessExtension();
+            $this->path = $filename . '.' . $this->getFile()->guessExtension();
         }
     }
 
@@ -126,23 +122,8 @@ class Document
         if (null === $this->getFile()) {
             return;
         }
-        if(!empty($this->cropParams)) {
-            $path = self::getUploadRootDir() . '/' .$this->path;
-            $arrCropParams = json_decode($this->cropParams,true);
-            $imagine = new  Imagine();
-            $image = $imagine->open($this->getFile());
-            $image
-                ->crop(new Point($arrCropParams['x1'], $arrCropParams['y1']),
-                    new Box($arrCropParams['w'], $arrCropParams['h']))
-                ->save($path);
-        } else {
-            // if there is an error when moving the file, an exception will
-            // be automatically thrown by move(). This will properly prevent
-            // the entity from being persisted to the database on error
-            $this->getFile()->move(self::getUploadRootDir(), $this->path);
-        }
 
-        $this->file = null;
+        $this->getFile()->move(self::getUploadRootDir(), $this->path);
     }
 
     /**
@@ -158,14 +139,16 @@ class Document
     /**
      * Lifecycle callback to upload the file to the server
      */
-    public function lifecycleFileUpload() {
+    public function lifecycleFileUpload()
+    {
         $this->upload();
     }
 
     /**
      * Updates the hash value to force the preUpdate and postUpdate events to fire
      */
-    public function refreshUpdated() {
+    public function refreshUpdated()
+    {
         $this->setUpdated(date('Y-m-d H:i:s'));
     }
 
@@ -178,7 +161,6 @@ class Document
     {
         return $this->id;
     }
-
 
 
     /**
@@ -208,6 +190,7 @@ class Document
     {
         return $this->getWebPath();
     }
+
     /**
      * @ORM\ManyToOne(targetEntity="Association", inversedBy="documents")
      **/
@@ -223,30 +206,6 @@ class Document
     {
         return $this->association;
     }
-
-
-    /**
-     * Set cropParams
-     *
-     * @param string $cropParams
-     *
-     * @return Document
-     */
-    public function setCropParams($cropParams)
-    {
-        $this->cropParams = $cropParams;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCropParams()
-    {
-        return $this->cropParams;
-    }
-
 
 
     /**
@@ -282,7 +241,7 @@ class Document
      */
     public function setIsDefault($isDefault)
     {
-        foreach($this->getAssociation()->getDocuments as $doc){
+        foreach ($this->getAssociation()->getDocuments as $doc) {
             $doc->setIsDefault(false);
         }
         $this->isDefault = $isDefault;
