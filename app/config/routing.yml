@@ -46,6 +46,10 @@ put_band:
   pattern:  /api/secure/band/{id}
   defaults: { _controller: ZEBABundle:Bands:putBand, _format: json }
   methods: put
+post_band:
+  pattern:  /api/secure/band
+  defaults: { _controller: ZEBABundle:Bands:postBand, _format: json }
+  methods: post
 
 userbands:
   type: rest
@@ -56,7 +60,10 @@ useritems:
   type: rest
   resource: ZE\BABundle\Controller\UserItemsController
   prefix:   /api/secure
-
+get_useritems:
+  pattern:  /api/secure/useritems
+  defaults: { _controller: ZEBABundle:UserItems:getUseritem, _format: json }
+  methods: get
 admin:
   type: rest
   resource: ZE\BABundle\Controller\AdminController

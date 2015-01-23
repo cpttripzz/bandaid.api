@@ -92,7 +92,7 @@ class Association
     protected $id;
 
     /**
-     * @Gedmo\Slug(fields={"name", "id"})
+     * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(unique=true)
      */
     private $slug;
@@ -345,6 +345,9 @@ class Association
      */
     public function removeAllGenres()
     {
+        if(!$this->genres){
+            return;
+        }
         foreach ($this->genres as $genre) {
             $this->removeGenre($genre);
         }
@@ -355,6 +358,9 @@ class Association
      */
     public function removeAllDocuments()
     {
+        if(!$this->documents){
+            return;
+        }
         foreach ($this->documents as $document) {
             $this->removeDocument($document);
         }
@@ -365,6 +371,9 @@ class Association
      */
     public function removeAllAddresses()
     {
+        if(!$this->addresses){
+            return;
+        }
         foreach ($this->addresses as $address) {
             $this->removeAddress($address);
         }

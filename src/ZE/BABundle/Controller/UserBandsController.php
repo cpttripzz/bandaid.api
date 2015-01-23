@@ -24,13 +24,13 @@ class UserBandsController  extends FOSRestController
     public function getUserBandsAction()
     {
 
-        if( !$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
+        if( !$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY') ){
             $data = array('Not Authorized');
             $view = $this->view($data, 404);
 
             return $this->handleView($view);
         }
-        $userId = $this->get('security.context')->getToken()->getUser()->getId();
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
         $data = $this->get('zeba.userbands_service')->findAll($this->get('request')->query->get('page', 1),$this->get('request')->query->get('limit', 12),$userId);
 
         $view = $this->view($data, 200);

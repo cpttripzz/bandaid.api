@@ -130,20 +130,21 @@ class ServiceAbstract
      */
     public function getPaginatedArray($dql,$tableAlias, $params=array())
     {
-        $page = $limit = 1;
-        if (!empty($params['page'])) {
-            $page = $params['page'];
-            unset($params['page']);
-        }
-        if (!empty($params['limit'])) {
-            $limit = $params['limit'];
-            unset($params['limit']);
-        }
+        list($limit, $page, $params) = $this->getPageAndLimit($params);
         $dql .= $this->setDqlWhere($params, $tableAlias , 'OR');
-        $query = $this->em->createQuery($dql)
-            ->setFirstResult(($page - 1) * $limit)
-            ->setMaxResults($limit);
+        $query = $this->processQueryPaging($dql, $page, $limit);
         $this->setDqlParams($query, $params, $params);
+        return $this->getQueryArrayResult($query, $page, $limit);
+    }
+
+    /**
+     * @param $query
+     * @param $page
+     * @param $limit
+     * @return array
+     */
+    protected function getQueryArrayResult($query, $page, $limit)
+    {
         $query->getArrayResult();
         $paginator = new Paginator($query, $fetchJoinCollection = true);
         $totalItems = count($paginator);
@@ -154,6 +155,39 @@ class ServiceAbstract
         $meta = array('total' => $totalItems, 'pagesCount' => $pagesCount);
         $arrEntity = iterator_to_array($paginator, false);
         return array($meta, $arrEntity);
+    }
+
+    /**
+     * @param $dql
+     * @param $page
+     * @param $limit
+     * @return mixed
+     */
+    protected function processQueryPaging($dql, $page, $limit)
+    {
+        $query = $this->em->createQuery($dql)
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit);
+        return $query;
+    }
+
+    /**
+     * @param $params
+     * @return array
+     */
+    protected function getPageAndLimit($params)
+    {
+        $page = $limit = 1;
+        if (!empty($params['page'])) {
+            $page = $params['page'];
+            unset($params['page']);
+        }
+        if (!empty($params['limit'])) {
+            $limit = $params['limit'];
+            unset($params['limit']);
+            return array($limit, $page, $params);
+        }
+        return array($limit, $page, $params);
     }
 
 }

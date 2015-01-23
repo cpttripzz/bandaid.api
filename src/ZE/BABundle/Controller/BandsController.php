@@ -2,14 +2,11 @@
 
 namespace ZE\BABundle\Controller;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use ZE\BABundle\Entity\Band;
+use ZE\BABundle\Request\GetBandRequest;
+use ZE\BABundle\Request\GetBandsRequest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use ZE\BABundle\Exception\InvalidFormException;
-
 
 class BandsController extends FOSRestController
 {
@@ -28,18 +25,12 @@ class BandsController extends FOSRestController
      *  }
      * )
      */
-    public function getBandsAction()
+    public function getBandsAction(Request $request)
     {
-
-        $data = $this->get('zeba.band_service')->findBands(
-            $this->get('request')->query->get('page', 1),
-            $this->get('request')->query->get('limit', 12)
-        );
-
+        $getBandsRequest = new GetBandsRequest($request->query->all());
+        $data = $this->get('zeba.band_service')->findBands($getBandsRequest->options);
         $view = $this->view($data, 200);
-
         return $this->handleView($view);
-
     }
 
     /**
@@ -52,20 +43,13 @@ class BandsController extends FOSRestController
      *  }
      * )
      */
-    public function getBandAction($slug)
+    public function getBandAction(Request $request, $slug)
     {
-
-        $data = $this->get('zeba.band_service')->findBands(
-            $this->get('request')->query->get('page', 1),
-            $this->get('request')->query->get('limit', 12),
-            array('bandSlug'=>$slug)
-        );
-
+        $data = $this->get('zeba.band_service')->findBands(array('slug' => $slug));
         $view = $this->view($data, 200);
-
         return $this->handleView($view);
-
     }
+
     /**
      *
      * @ApiDoc(
@@ -80,20 +64,51 @@ class BandsController extends FOSRestController
     public function putBandAction(Request $request, $id)
     {
         try {
-
-            $this->container->get('zeba_band.handler')->post($request,$id);
-            $data = $this->get('zeba.band_service')->findBands(null,null,
-                array('bandId'=>$id)
+            $em = $this->getDoctrine()->getManager();
+            $band = $em->getRepository('ZE\BABundle\Entity\Band')->find($id);
+            if (false === $this->get('security.authorization_checker')->isGranted('edit', $band)) {
+                $view = $this->view(array('not authorized'), 403);
+                return $this->handleView($view);
+            }
+            $this->container->get('zeba_band.handler')->save($request, $id);
+            $data = $this->get('zeba.band_service')->findBands(null, null,
+                array('bandId' => $id)
             );
             $view = $this->view($data, 200);
             return $this->handleView($view);
-        } catch (Exception $e){
+        } catch (Exception $e) {
             $view = $this->view(array('form' => $e->getMessage()), 500);
 
             return $this->handleView($view);
         }
+    }
 
+    /**
+     *
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Update Band Info",
+     *  filters={
+     *      {"name"="id", "dataType"="integer"},
+     *  }
+     * )
+     */
 
+    public function postBandAction(Request $request)
+    {
+        try {
+            $entity = $this->container->get('zeba_band.handler')->save($request);
+            $id = $entity->getId();
+            $data = $this->get('zeba.band_service')->findBands(null, null,
+                array('bandId' => $id)
+            );
+            $view = $this->view($data, 200);
+            return $this->handleView($view);
+        } catch (Exception $e) {
+            $view = $this->view(array('form' => $e->getMessage()), 500);
+
+            return $this->handleView($view);
+        }
     }
 
 }

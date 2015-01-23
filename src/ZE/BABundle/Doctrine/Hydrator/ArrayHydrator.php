@@ -29,12 +29,28 @@ class ArrayHydrator {
                     $namespace = StringUtil::before_last('\\', get_class($entity));
                     $newPropArrayCollection = new ArrayCollection();
                     $repository = $this->em->getRepository($namespace . '\\' . Inflector::singularize($property));
-                    $entity->{'removeAll' . ucwords($property)}($newPropArrayCollection);
+                    $entity->{'removeAll' . ucwords($property)}();
                     $this->em->persist($entity);
-                    $this->em->flush($entity);
+
                     foreach ($value as $propId) {
-                        $propertyEntity = $repository->find($propId);
-                        $newPropArrayCollection->add($propertyEntity);
+                        if(is_array($propId)){
+                            $arrPropertiesToSearch = array('slug');
+                            $propertyEntity = null;
+                            foreach($arrPropertiesToSearch as $propertiesToSearch){
+                                if (isset($propId[$propertiesToSearch])){
+                                    $propertyEntity = $repository->{'findOneBy' . ucwords($propertiesToSearch)}($propId[$propertiesToSearch]);
+                                    if(!empty($propertyEntity)){
+                                        break;
+                                    }
+                                }
+                            }
+                        } else {
+                            $propertyEntity = $repository->find($propId);
+                        }
+                        if(!empty($propertyEntity)){
+                            $newPropArrayCollection->add($propertyEntity);
+                        }
+
                     }
                     $entity->{'set' . ucwords($property)}($newPropArrayCollection);
                 } catch (\Exception $e){
@@ -42,14 +58,18 @@ class ArrayHydrator {
                 }
             } else {
                 $prop = 'set' .ucwords($property);
-                if(property_exists($entity, $prop )) {
-                    $entity->{$prop}($value);
+                try {
+                    if (method_exists($entity, $prop)) {
+                        $entity->{$prop}($value);
+                    }
+                } catch (\Exception $e){
+                    continue;
                 }
             }
-            $this->em->persist($entity);
-            $this->em->flush($entity);
-
         }
+        $this->em->persist($entity);
+        $this->em->flush($entity);
+
         return $entity;
     }
 } 

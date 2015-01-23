@@ -106,7 +106,7 @@ class MusicianController extends Controller implements UrlTracker
 
         $entity = $em->getRepository('ZE\BABundle\Entity\Musician')->find($id);
 
-        /*if (false === $this->get('security.context')->isGranted('view', $entity)) {
+        /*if (false === $this->get('security.authorization_checker')->isGranted('view', $entity)) {
             throw new AccessDeniedException('Unauthorised access!');
         }*/
         if (!$entity) {
@@ -133,7 +133,7 @@ class MusicianController extends Controller implements UrlTracker
     private function createEditForm(Musician $entity)
     {
 
-        if (false === $this->get('security.context')->isGranted('edit', $entity)) {
+        if (false === $this->get('security.authorization_checker')->isGranted('edit', $entity)) {
             throw new AccessDeniedException('Unauthorised access!');
         }
         $form = $this->createForm(new MusicianType($this->get('security.context')), $entity, array(

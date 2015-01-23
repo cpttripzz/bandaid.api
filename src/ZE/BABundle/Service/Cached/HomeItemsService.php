@@ -15,21 +15,9 @@ class HomeItemsService extends ServiceAbstract
         $this->bandService = $bandService;
         parent::__construct($cacheProvider,$entityManager,$sideload);
     }
-    public function getHomeItems($userId, $page, $limit)
+    public function getHomeItems($params)
     {
-        $homeItems = array();
-        $homeItems= $this->bandService->findBands( $page, $limit,array('userNot' =>$userId));
-
-        if($this->sideload){
-            $arrBandIds = array();
-            $homeItems['homeitem']['id'] = 1;
-            $homeItems['homeitem']['name'] = 'home items test';
-            foreach($homeItems['bands'] as $key=>$homeItem){
-                $arrBandIds[] = $homeItem['id'];
-            }
-            $homeItems['homeitem']['bands'] = $arrBandIds;
-        }
-
+        $homeItems= $this->bandService->findBands($params);
         return $homeItems;
     }
     protected function sideloadEntity(&$arrEnt, &$arrAddress, &$arrGenres, &$arrCountries, &$arrCities, &$arrRegions, &$arrAddresses, &$arrInstruments=array())

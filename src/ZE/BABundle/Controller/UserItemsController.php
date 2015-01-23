@@ -2,8 +2,10 @@
 namespace ZE\BABundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
 use ZE\BABundle\Entity\User;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use ZE\BABundle\Request\GetRequest;
 
 class UserItemsController  extends FOSRestController
 {
@@ -21,17 +23,20 @@ class UserItemsController  extends FOSRestController
      *  }
      * )
      */
-    public function getUseritemAction($slug)
+    public function getUseritemAction(Request $request)
     {
 
-        if( !$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY') ){
+        if( !$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY') ){
             $data = array('Not Authorized');
             $view = $this->view($data, 404);
-
             return $this->handleView($view);
         }
-        $userId = $this->get('security.context')->getToken()->getUser()->getId();
-        $data = $this->get('zeba.useritems_service')->findAll($this->get('request')->query->get('page', 1),$this->get('request')->query->get('limit', 12),$userId);
+        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
+        $getRequst = new GetRequest($request->query->all());
+        $params = $getRequst->options;
+        $params['userId'] = $userId;
+
+        $data = $this->get('zeba.useritems_service')->findAll($params);
 
         $view = $this->view($data, 200);
         return $this->handleView($view);

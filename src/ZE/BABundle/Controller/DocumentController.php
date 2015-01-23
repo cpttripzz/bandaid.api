@@ -209,7 +209,7 @@ class DocumentController extends Controller
         $association = $em->getRepository('ZE\BABundle\Entity\Association')->find($associationId);
 
 
-        if (false === $this->get('security.context')->isGranted('edit', $association)) {
+        if (false === $this->get('security.authorization_checker')->isGranted('edit', $association)) {
             return new JsonResponse('not authorized', 403);
         }
 

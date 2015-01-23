@@ -25,8 +25,8 @@ class ApiController extends Controller
     public function joinBandRequestAction($bandId, $musicianId)
     {
         $this->em = $this->getDoctrine()->getManager();
-        $user = $this->get('security.context')->getToken()->getUser();
-        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return new JsonResponse(array("Not Logged In"), 401);
         }
         if ($user->hasRole('ROLE_USER')) {
@@ -46,9 +46,9 @@ class ApiController extends Controller
     public function joinBandAcceptAction($bandId, $musicianId)
     {
         $this->em = $this->getDoctrine()->getManager();
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return new JsonResponse(array("msg" => "Not Logged In"), 401);
         }
 
@@ -70,10 +70,10 @@ class ApiController extends Controller
     {
         $this->em = $this->getDoctrine()->getManager();
         $this->msgService = $this->get('snc_redis.default');
-        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return new JsonResponse(array("success" => false, "msg" => "Not Logged In"), 401);
         }
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $msgIds = $this->msgService->lrange('messages:' . $user->getId(), 0, -1);
         if ($msgIds) {
@@ -128,10 +128,10 @@ class ApiController extends Controller
     {
         $this->msgService = $this->get('snc_redis.default');
         $this->em = $this->getDoctrine()->getManager();
-        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return new JsonResponse(array("success" => false, "msg" => "Not Logged In"), 401);
         }
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
         $userId = $user->getId();
         $arrMsgIds = explode(',', $msgIds);
         $msgIds = $this->msgService->lrange('messages:' . $userId, 0, -1);
@@ -183,7 +183,7 @@ class ApiController extends Controller
         $association = $em->getRepository('ZE\BABundle\Entity\Association')->find($associationId);
 
 
-        if (false === $this->get('security.context')->isGranted('edit', $association)) {
+        if (false === $this->get('security.authorization_checker')->isGranted('edit', $association)) {
             return new JsonResponse('not authorized', 403);
         }
         $ids = explode(',',$ids);

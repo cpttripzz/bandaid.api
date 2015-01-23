@@ -14,6 +14,7 @@ services:
             - ZE\BABundle\Entity\Band
             - @form.factory
             - @security.authorization_checker
+            - @security.token_storage
     zeba_doctrine.hydrator:
         class:  ZE\BABundle\Doctrine\Hydrator\ArrayHydrator
         arguments:
@@ -47,7 +48,7 @@ services:
         class: ZE\BABundle\Service\Cached\UserItemsService
         parent: zeba_cacheservice
         arguments:
-            - @zeba.userbands_service
+            - @zeba.band_service
     zeba.admin_service:
         class: ZE\BABundle\Service\Cached\AdminService
         parent: zeba_cacheservice

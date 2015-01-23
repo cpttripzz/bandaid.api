@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use ZE\BABundle\Entity\Band;
 use ZE\BABundle\Exception\InvalidFormException;
@@ -21,14 +22,17 @@ class BandHandler
     private $repository;
     private $formFactory;
     private $authorizationCheckerInterface;
+    private $tokenStorage;
 
-    public function __construct(EntityManager $em, $entityClass, FormFactoryInterface $formFactory, AuthorizationCheckerInterface $authorizationCheckerInterface)
+    public function __construct(EntityManager $em, $entityClass, FormFactoryInterface $formFactory,
+        AuthorizationCheckerInterface $authorizationCheckerInterface, TokenStorage $tokenStorage)
     {
         $this->em = $em;
         $this->entityClass = $entityClass;
         $this->repository = $this->em->getRepository($this->entityClass);
         $this->formFactory = $formFactory;
         $this->authorizationCheckerInterface = $authorizationCheckerInterface;
+        $this->tokenStorage = $tokenStorage;
     }
 
 
@@ -38,17 +42,22 @@ class BandHandler
     }
 
 
-    public function post(Request $request, $id)
+    public function save(Request $request, $id=null)
     {
-        $entity = $this->get($id);
+        if($id) {
+            $entity = $this->get($id);
 
-        if (!$entity) {
-            throw new NotFoundHttpException('Unable to find Band entity.');
+            if (!$entity) {
+                throw new NotFoundHttpException('Unable to find Band entity.');
+            }
+            if (false === $this->authorizationCheckerInterface->isGranted('edit', $entity)) {
+                throw new AccessDeniedException('Unauthorised access!');
+            }
+        } else {
+            $entity = new Band();
+            $user = $this->tokenStorage->getToken()->getUser();
+            $entity->setUser($user);
         }
-        if (false === $this->authorizationCheckerInterface->isGranted('edit', $entity)) {
-            throw new AccessDeniedException('Unauthorised access!');
-        }
-
         $arrPropsToUnset = array('userId','type','useritems','createdAt','updatedAt','id');
         $arrPropsToNullify = array('slug');
 
@@ -66,6 +75,7 @@ class BandHandler
         }
         $arrayHydrator = new ArrayHydrator($this->em);
         $entity = $arrayHydrator->hydrateFromArray($entity, $parameters);
+
         $this->em->persist($entity);
         $this->em->flush();
 
