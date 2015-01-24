@@ -22,18 +22,16 @@ class DocumentController extends FOSRestController
      * Creates a new Document entity.
      *
      */
-    public function postDocumentAction(Request $request)
+    public function postDocumentAction(Request $request, $associationId)
     {
 
-        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            $data = array('Not Authorized');
-            $view = $this->view($data, 404);
+        $em = $this->getDoctrine()->getManager();
+        $association = $em->getRepository('ZEBABundle:Association')->find($associationId);
+        if (false === $this->get('security.authorization_checker')->isGranted('edit', $association)) {
+            $view = $this->view(array('not authorized'), 403);
             return $this->handleView($view);
         }
-        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
         $entity = new Document();
-        $em = $this->getDoctrine()->getManager();
-        $association = $em->getRepository('ZEBABundle:Association')->find($userId);
         $entity->setAssociation($association);
         foreach ($request->files as $file) {
             $entity->setFile($file);
