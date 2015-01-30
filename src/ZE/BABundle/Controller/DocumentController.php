@@ -44,4 +44,25 @@ class DocumentController extends FOSRestController
         $view = $this->view($data, 200);
         return $this->handleView($view);
     }
+
+    /**
+     * Creates a new Document entity.
+     *
+     */
+    public function deleteDocumentAction($documentId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $document = $em->getRepository('ZEBABundle:Document')->find($documentId);
+
+        if (false === $this->get('security.authorization_checker')->isGranted('edit', $document->getAssociation())) {
+            $view = $this->view(array('not authorized'), 403);
+            return $this->handleView($view);
+        }
+        $em->remove($document);
+        $em->flush();
+
+        $data = array('success' => true);
+        $view = $this->view($data, 200);
+        return $this->handleView($view);
+    }
 }

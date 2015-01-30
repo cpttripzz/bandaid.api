@@ -124,7 +124,7 @@ class Document
         }
         $imagine = new \Imagine\Gd\Imagine();
         $image = $imagine->open($this->getFile()->getPathName());
-        $thumbnail = $image->thumbnail(new Box(82,50));
+        $thumbnail = $image->thumbnail(new Box(108,76));
         $thumbnail->save(getcwd() . '/media/cache/thumb/img/users/grid/'.$this->path );
 
         $this->getFile()->move(self::getUploadRootDir(), $this->path);
