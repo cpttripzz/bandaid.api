@@ -38,6 +38,11 @@ genres:
   resource: ZE\BABundle\Controller\GenresController
   prefix:   /api/open
 
+instruments:
+  type: rest
+  resource: ZE\BABundle\Controller\InstrumentsController
+  prefix:   /api/open
+
 bands:
   type: rest
   resource: ZE\BABundle\Controller\BandsController

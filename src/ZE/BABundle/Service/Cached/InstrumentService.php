@@ -8,17 +8,17 @@
 
 namespace ZE\BABundle\Service\Cached;
 
-class GenreService extends ServiceAbstract
+class InstrumentService extends ServiceAbstract
 {
-    public function findGenres($params = array())
+    public function findInstruments($params = array())
     {
         $dql = "
-              SELECT g
-              FROM ZEBABundle:Genre g
+              SELECT i
+              FROM ZEBABundle:Instrument i
             ";
 
-        $entitySingular = !empty(array_intersect(array('genreId'), array_keys($params)));
-        $entityReturnName = 'genres';
+        $entitySingular = !empty(array_intersect(array('instrumentId'), array_keys($params)));
+        $entityReturnName = 'instruments';
         $query = $this->processQueryPaging($dql, null, null);
         $this->setDqlParams($query, $params, $params);
 

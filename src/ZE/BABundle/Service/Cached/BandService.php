@@ -67,19 +67,7 @@ class BandService extends ServiceAbstract
         $query = $this->processQueryPaging($dql, $page, $limit);
         $this->setDqlParams($query, $params, $dqlParams);
 
-        list($meta,$arrEntity ) = $this->getQueryArrayResult($query, $page, $limit);
-
-        if ($entitySingular) {
-            $entityReturnName = 'band';
-            $arrEntity = reset($arrEntity);
-        }
-
-        if ($entitySingular) {
-            return empty($arrEntity) ? array() : reset($arrEntity);
-        } else {
-            return array($entityReturnName => $arrEntity, 'meta' => $meta);
-        }
-
+        return $this->getQueryArrayResult($query, $page, $limit, $entityReturnName,$entitySingular );
 
     }
 

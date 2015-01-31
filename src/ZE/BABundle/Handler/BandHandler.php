@@ -42,10 +42,10 @@ class BandHandler
     }
 
 
-    public function save(Request $request, $id=null)
+    public function save($request)
     {
-        if($id) {
-            $entity = $this->get($id);
+        if(isset($request['id'])) {
+            $entity = $this->get($request['id']);
 
             if (!$entity) {
                 throw new NotFoundHttpException('Unable to find Band entity.');
@@ -61,20 +61,19 @@ class BandHandler
         $arrPropsToUnset = array('userId','type','useritems','createdAt','updatedAt','id');
         $arrPropsToNullify = array('slug');
 
-        $parameters = $request->request->all();
-        if(isset($parameters['band'])) {
-            $parameters = $parameters['band'];
+        if(isset($request['band'])) {
+            $request = $request['band'];
         }
         foreach($arrPropsToNullify as $propToNullify){
-            $parameters[$propToNullify] = null;
+            $request[$propToNullify] = null;
         }
         foreach ($arrPropsToUnset as $propsToUnset) {
-            if (array_key_exists($propsToUnset,$parameters)){
-                unset($parameters[$propsToUnset]);
+            if (array_key_exists($propsToUnset,$request)){
+                unset($request[$propsToUnset]);
             }
         }
         $arrayHydrator = new ArrayHydrator($this->em);
-        $entity = $arrayHydrator->hydrateFromArray($entity, $parameters);
+        $entity = $arrayHydrator->hydrateFromArray($entity, $request);
 
         $this->em->persist($entity);
         $this->em->flush();

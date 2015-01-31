@@ -31,8 +31,10 @@ abstract class RequestAbstract
                 $resolver->{'set' . ucwords($columnConfigName)}($name,$columnConfigType);
             }
         }
-        $resolver->setNormalizer('page', function(Options $options, $value) {
-            return (int) $value;
-        });
+        if(isset($options['page'])) {
+            $resolver->setNormalizer('page', function (Options $options, $value) {
+                return (int)$value;
+            });
+        }
     }
 }

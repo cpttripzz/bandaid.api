@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use ZE\BABundle\Request\GetBandRequest;
 use ZE\BABundle\Request\GetBandsRequest;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use ZE\BABundle\Request\PutBandRequest;
 
 class BandsController extends FOSRestController
 {
@@ -27,7 +28,7 @@ class BandsController extends FOSRestController
      */
     public function getBandsAction(Request $request)
     {
-        $getBandsRequest = new GetBandsRequest($request->query->all());
+        $getBandsRequest = new GetBandRequest($request->query->all());
         $data = $this->get('zeba.band_service')->findBands($getBandsRequest->options);
         $view = $this->view($data, 200);
         return $this->handleView($view);
@@ -70,10 +71,9 @@ class BandsController extends FOSRestController
                 $view = $this->view(array('not authorized'), 403);
                 return $this->handleView($view);
             }
-            $this->container->get('zeba_band.handler')->save($request, $id);
-            $data = $this->get('zeba.band_service')->findBands(null, null,
-                array('bandId' => $id)
-            );
+            $putBandRequest = new PutBandRequest($request->request->all());
+            $this->container->get('zeba_band.handler')->save($putBandRequest->options, $id);
+            $data = $this->get('zeba.band_service')->findBands(array('bandId' => $id));
             $view = $this->view($data, 200);
             return $this->handleView($view);
         } catch (Exception $e) {
@@ -99,9 +99,7 @@ class BandsController extends FOSRestController
         try {
             $entity = $this->container->get('zeba_band.handler')->save($request);
             $id = $entity->getId();
-            $data = $this->get('zeba.band_service')->findBands(null, null,
-                array('bandId' => $id)
-            );
+            $data = $this->get('zeba.band_service')->findBands(array('bandId' => $id));
             $view = $this->view($data, 200);
             return $this->handleView($view);
         } catch (Exception $e) {

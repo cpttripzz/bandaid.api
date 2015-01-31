@@ -39,6 +39,9 @@ services:
     zeba.genre_service:
         class: ZE\BABundle\Service\Cached\GenreService
         parent: zeba_cacheservice
+    zeba.instrument_service:
+        class: ZE\BABundle\Service\Cached\InstrumentService
+        parent: zeba_cacheservice
     zeba.homeitems_service:
         class: ZE\BABundle\Service\Cached\HomeItemsService
         parent: zeba_cacheservice

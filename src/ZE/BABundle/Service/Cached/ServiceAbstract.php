@@ -7,6 +7,7 @@
  */
 namespace ZE\BABundle\Service\Cached;
 
+use Doctrine\Common\Inflector\Inflector;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 
@@ -143,7 +144,7 @@ class ServiceAbstract
      * @param $limit
      * @return array
      */
-    protected function getQueryArrayResult($query, $page, $limit)
+    protected function getQueryArrayResult($query, $page, $limit, $entityReturnName,$entitySingular=false)
     {
         $query->getArrayResult();
         $paginator = new Paginator($query, $fetchJoinCollection = true);
@@ -154,7 +155,14 @@ class ServiceAbstract
         }
         $meta = array('total' => $totalItems, 'pagesCount' => $pagesCount);
         $arrEntity = iterator_to_array($paginator, false);
-        return array($meta, $arrEntity);
+
+        if ($entitySingular) {
+            $arrEntity = reset($arrEntity);
+            return empty($arrEntity) ? array() : reset($arrEntity);
+        } else {
+            return array($entityReturnName => $arrEntity, 'meta' => $meta);
+        }
+
     }
 
     /**
@@ -165,9 +173,11 @@ class ServiceAbstract
      */
     protected function processQueryPaging($dql, $page, $limit)
     {
-        $query = $this->em->createQuery($dql)
-            ->setFirstResult(($page - 1) * $limit)
-            ->setMaxResults($limit);
+        $query = $this->em->createQuery($dql);
+        if($page && $limit) {
+            $query->setFirstResult(($page - 1) * $limit)
+                ->setMaxResults($limit);
+        }
         return $query;
     }
 
